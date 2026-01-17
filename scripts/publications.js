@@ -36,9 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const metaLine = metaParts.join(", ");
 
+          const formatAuthors = (str) => {
+          return str
+         .replace(/\s+and\s+/g, ", ")
+         .replace(/\s*,\s*$/, "");
+        };
+
+
           div.innerHTML = `
             <p class="pub-title">${pub.title}</p>
-            <p class="pub-authors">${pub.authors}</p>
+            <p class="pub-authors">${formatAuthors(pub.Authors || "")}</p>
             ${metaLine ? `<p class="pub-journal">${metaLine}</p>` : ""}
             <div class="pub-links">
               ${pub.link ? `<a href="${pub.link}" target="_blank" rel="noopener">Link</a>` : ""}
@@ -56,5 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
 
 

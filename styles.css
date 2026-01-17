@@ -783,16 +783,18 @@ nav a.active {
   align-items: center;
   justify-content: center;
   width: 150px;          /* adjust 140–180px if you want */
+  max-width: 150px;
+  flex-shrink: 0;
   background: #ffffff;
   padding: 6px 8px;
   border-radius: 6px;
 }
 
-/* logo just sits inside the pill */
 .footer-funding img {
+  max-width: 100%;
   max-height: 32px;
   width: auto;
-  height: auto;
+  height: 50px;
   object-fit: contain;
 }
 
@@ -1040,6 +1042,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

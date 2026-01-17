@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const metaLine = metaParts.join(", ");
 
           div.innerHTML = `
-            <p class="pub-title">${pub.title || ""}</p>
+            <p class="pub-title">${formatAuthors(pub.title || "")}</p>
             <p class="pub-authors">${formatAuthors(pub.authors || "")}</p>
             ${metaLine ? `<p class="pub-journal">${metaLine}</p>` : ""}
             <div class="pub-links">
@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
 
 
 

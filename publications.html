@@ -254,7 +254,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (pub.doi) {
       const doi = escapeHtml(pub.doi.trim());
-      parts.push(`DOI: <a href="https://doi.org/${doi}" target="_blank" rel="noopener noreferrer">${doi}</a>.`);
+      parts.push(
+        `DOI: <a href="https://doi.org/${doi}" target="_blank" rel="noopener noreferrer">${doi}</a>.`
+      );
     }
 
     return parts.join(" ");
@@ -337,6 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 

@@ -172,53 +172,53 @@
   }
 
   function makePubItem(pub) {
-    const authors = escapeHtml(formatAuthors(pub.authors || ""));
-    const title   = escapeHtml(pub.title || "");
-    const journal = escapeHtml(pub.journal || "");
-    const year    = escapeHtml(pub.year || "");
-    const volume  = escapeHtml(pub.volume || "");
-    const pages   = escapeHtml(pub.pages || "");
-    const doi     = escapeHtml((pub.doi || "").trim());
-    const link    = pub.link || "";
+  const authors = escapeHtml(formatAuthors(pub.authors || ""));
+  const title   = escapeHtml(pub.title || "");
+  const journal = escapeHtml(pub.journal || "");
+  const year    = escapeHtml(pub.year || "");
+  const volume  = escapeHtml(pub.volume || "");
+  const pages   = escapeHtml(pub.pages || "");
+  const doi     = escapeHtml((pub.doi || "").trim());
+  const link    = pub.link || "";
 
-    const parts = [];
+  const parts = [];
 
-    if (authors) parts.push(authors + ".");
-    if (title)   parts.push(title + ".");
+  if (authors) parts.push(authors + ".");
+  if (title)   parts.push(title + ".");
 
-    const journalBits = [];
-    if (journal) journalBits.push("<em>" + journal + "</em>");
-    if (year)    journalBits.push("<strong>" + year + "</strong>");
-    if (volume)  journalBits.push(volume);
-    if (pages)   journalBits.push(pages);
+  const journalBits = [];
+  if (journal) journalBits.push("<em>" + journal + "</em>");
+  if (year)    journalBits.push("<strong>" + year + "</strong>");
+  if (volume)  journalBits.push(volume);
+  if (pages)   journalBits.push(pages);
 
-    if (journalBits.length) {
-      parts.push(journalBits.join(", ") + ".");
-    }
-
-    if (doi) {
-      parts.push("DOI: " + doi + ".");
-    }
-
-    const citationHTML = parts.join(" ");
-
-    let linksHTML = "";
-    if (link) {
-      linksHTML += `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Link</a>`;
-    }
-    if (doi) {
-      const doiUrl = "https://doi.org/" + encodeURIComponent(doi);
-      linksHTML += (linksHTML ? " · " : "");
-      linksHTML += `<a href="${doiUrl}" target="_blank" rel="noopener noreferrer">DOI</a>`;
-    }
-
-    return `
-      <li class="pub-item">
-        <div class="pub-citation">${citationHTML}</div>
-        ${linksHTML ? `<div class="pub-links">${linksHTML}</div>` : ""}
-      </li>
-    `;
+  if (journalBits.length) {
+    parts.push(journalBits.join(", ") + ".");
   }
+
+  if (doi) {
+    parts.push("DOI: " + doi + ".");
+  }
+
+  const citationHTML = parts.join(" ");
+
+  let linksHTML = "";
+  if (link) {
+    linksHTML += `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Link</a>`;
+  }
+  if (doi) {
+    const doiUrl = "https://doi.org/" + encodeURIComponent(doi);
+    linksHTML += (linksHTML ? " · " : "");
+    linksHTML += `<a href="${doiUrl}" target="_blank" rel="noopener noreferrer">DOI</a>`;
+  }
+
+  return `
+    <li class="pub-item">
+      <div class="pub-citation">${citationHTML}</div>
+      ${linksHTML ? `<div class="pub-links">${linksHTML}</div>` : ""}
+    </li>
+  `;
+}
 
   function loadPublications() {
     const listEl = document.getElementById("pub-list");
@@ -290,6 +290,7 @@
 
 </body>
 </html>
+
 
 
 

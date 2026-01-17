@@ -768,13 +768,11 @@ nav a.active {
   opacity: 0.85;
 }
 
-/* row of equal-size pills */
 .footer-funding {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.4rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 150px);  /* 3 columns of 150px cards */
+  justify-content: center;                  /* center the 3×2 grid */
+  gap: 1.4rem 2rem;                         /* row / column gaps */
 }
 
 /* each sponsor gets the same-width white pill */
@@ -1042,6 +1040,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

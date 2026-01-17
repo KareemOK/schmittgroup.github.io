@@ -155,39 +155,101 @@
 
 <!-- ====== SCRIPTS ====== -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const listEl = document.getElementById("pub-list");
-  const errEl  = document.getElementById("pub-error");
+(function () {
 
-  // quick sanity check that the script is actually running
-  if (!listEl) {
-    console.error("No #pub-list element found");
-    return;
+  function escapeHtml(str) {
+    return String(str == null ? "" : str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
-  listEl.innerHTML = "<li>Script is running… trying to load JSON</li>";
 
-  fetch("publications.json?cb=" + Date.now(), { cache: "no-store" })
-    .then(res => {
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      return res.json();
-    })
-    .then(pubs => {
-      console.log("Loaded publications.json, items:", pubs.length);
-      listEl.innerHTML = pubs.map(pub => `
-        <li class="pub-item">
-          <strong>${pub.title || "Untitled"}</strong><br>
-          ${pub.authors || ""} (${pub.year || "n.d."})
-        </li>
-      `).join("");
-    })
-    .catch(err => {
-      console.error("Error loading publications.json:", err);
-      listEl.innerHTML = "";
-      if (errEl) errEl.style.display = "block";
-    });
-});
+  // "A and B and C" → "A; B; C"
+  function formatAuthors(str) {
+    return (str || "").split(/\s+and\s+/).join("; ");
+  }
+
+  function makePubItem(pub) {
+    const authors = escapeHtml(formatAuthors(pub.authors || ""));
+    const title   = escapeHtml(pub.title || "");
+    const journal = escapeHtml(pub.journal || "");
+    const year    = escapeHtml(pub.year || "");
+    const volume  = escapeHtml(pub.volume || "");
+    const pages   = escapeHtml(pub.pages || "");
+    const doi     = escapeHtml((pub.doi || "").trim());
+    const link    = pub.link || "";
+
+    const parts = [];
+
+    if (authors) parts.push(authors + ".");
+    if (title)   parts.push(title + ".");
+
+    const journalBits = [];
+    if (journal) journalBits.push("<em>" + journal + "</em>");
+    if (year)    journalBits.push("<strong>" + year + "</strong>");
+    if (volume)  journalBits.push(volume);
+    if (pages)   journalBits.push(pages);
+
+    if (journalBits.length) {
+      parts.push(journalBits.join(", ") + ".");
+    }
+
+    if (doi) {
+      parts.push("DOI: " + doi + ".");
+    }
+
+    const citationHTML = parts.join(" ");
+
+    let linksHTML = "";
+    if (link) {
+      linksHTML += `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Link</a>`;
+    }
+    if (doi) {
+      const doiUrl = "https://doi.org/" + encodeURIComponent(doi);
+      linksHTML += (linksHTML ? " · " : "");
+      linksHTML += `<a href="${doiUrl}" target="_blank" rel="noopener noreferrer">DOI</a>`;
+    }
+
+    return `
+      <li class="pub-item">
+        <div class="pub-citation">${citationHTML}</div>
+        ${linksHTML ? `<div class="pub-links">${linksHTML}</div>` : ""}
+      </li>
+    `;
+  }
+
+  function loadPublications() {
+    const listEl = document.getElementById("pub-list");
+    const errEl  = document.getElementById("pub-error");
+
+    fetch("publications.json?cb=" + Date.now(), { cache: "no-store" })
+      .then(res => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(pubs => {
+        if (!Array.isArray(pubs)) pubs = [];
+
+        const sorted = pubs.sort((a, b) =>
+          Number(b.year || 0) - Number(a.year || 0)
+        );
+
+        listEl.innerHTML =
+          sorted.map(makePubItem).join("") ||
+          `<li class="pub-item"><div class="pub-citation">No publications found.</div></li>`;
+      })
+      .catch(err => {
+        console.error("Error loading publications:", err);
+        if (errEl) errEl.style.display = "block";
+      });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadPublications);
+})();
 </script>
-
+  
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.querySelector(".nav-toggle");
@@ -228,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 

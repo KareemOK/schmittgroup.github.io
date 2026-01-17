@@ -775,15 +775,18 @@ nav a.active {
 }
 
 .footer-funding img {
-  height: 36px;
+  max-height: 40px;
   width: auto;
+  height: auto;
   background: #ffffff;
   padding: 6px 8px;
   border-radius: 6px;
+  object-fit: contain;
 }
 
+/* priority logos no longer larger */
 .footer-funding img.priority {
-  height: 42px;
+  max-height: 40px;
 }
 
 /* ---------- FOOTER BOTTOM ---------- */
@@ -1019,3 +1022,4 @@ header {
     height: 45px;
   }
 }
+

@@ -159,6 +159,10 @@ nav a.active {
   border-color: #2f5d8a;
 }
 
+.hero-content {
+  margin-top: 8rem; /* adjust as needed */
+}
+
 /* ---------- GENERIC BUTTONS ---------- */
 .button {
   display: inline-block;
@@ -1076,6 +1080,7 @@ header {
   align-items: flex-start !important;  /* left-align items */
   text-align: left !important;         /* left-align text */
 }
+
 
 
 

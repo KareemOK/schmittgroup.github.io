@@ -731,6 +731,10 @@ nav a.active {
   opacity: 0.85;
 }
 
+.section h2 {
+  margin-bottom: 0.5rem;
+}
+
 /* ---------- CONTACT ---------- */
 .footer-contact {
   display: flex;
@@ -1085,6 +1089,7 @@ header {
   align-items: flex-start !important;  /* left-align items */
   text-align: left !important;         /* left-align text */
 }
+
 
 
 

@@ -785,7 +785,7 @@ nav a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;           /* card width */
+  width: 130px;           /* card width */
   height: 52px;           /* card height */
   background: #ffffff;
   border-radius: 6px;
@@ -1051,6 +1051,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

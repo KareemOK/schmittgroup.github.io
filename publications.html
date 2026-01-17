@@ -166,59 +166,85 @@
       .replace(/'/g, "&#039;");
   }
 
-  // "A and B and C" → "A; B; C"
-  function formatAuthors(str) {
-    return (str || "").split(/\s+and\s+/).join("; ");
+  // "Last, First Middle" → "Last, F. M."
+  // "A and B and C" → "A; B; C" using that transformation
+  function formatAuthorsInitials(str) {
+    return (str || "").split(/\s+and\s+/).map(author => {
+      author = author.trim();
+      if (!author) return "";
+
+      const parts = author.split(",");
+      if (parts.length < 2) {
+        // no comma → leave as-is (e.g. "Seán Hennessey")
+        return author;
+      }
+
+      const last = parts[0].trim();
+      const firstBlock = parts.slice(1).join(" ").trim();
+      if (!firstBlock) return last;
+
+      const tokens = firstBlock.split(/\s+/).filter(Boolean);
+      const initials = tokens.map(tok => {
+        // already like "J." → keep it
+        if (/^[A-Z]\.$/.test(tok)) return tok;
+        // single letter without dot → add dot
+        if (/^[A-Z]$/i.test(tok)) return tok[0].toUpperCase() + ".";
+        // normal name, take first letter
+        return tok[0].toUpperCase() + ".";
+      });
+
+      return `${last}, ${initials.join(" ")}`;
+    }).filter(Boolean).join("; ");
   }
 
   function makePubItem(pub) {
-  const authors = escapeHtml(formatAuthors(pub.authors || ""));
-  const title   = escapeHtml(pub.title || "");
-  const journal = escapeHtml(pub.journal || "");
-  const year    = escapeHtml(pub.year || "");
-  const volume  = escapeHtml(pub.volume || "");
-  const pages   = escapeHtml(pub.pages || "");
-  const doi     = escapeHtml((pub.doi || "").trim());
-  const link    = pub.link || "";
+    const authors = escapeHtml(formatAuthorsInitials(pub.authors || ""));
+    const title   = escapeHtml(pub.title || "");
+    const journal = escapeHtml(pub.journal || "");
+    const year    = escapeHtml(pub.year || "");
+    const volume  = escapeHtml(pub.volume || "");
+    const pages   = escapeHtml(pub.pages || "");
+    const doi     = escapeHtml((pub.doi || "").trim());
+    const link    = pub.link || "";
 
-  const parts = [];
+    const parts = [];
 
-  if (authors) parts.push(authors + ".");
-  if (title)   parts.push(title + ".");
+    if (authors) parts.push(authors + ".");
+    if (title)   parts.push(title + ".");
 
-  const journalBits = [];
-  if (journal) journalBits.push("<em>" + journal + "</em>");
-  if (year)    journalBits.push("<strong>" + year + "</strong>");
-  if (volume)  journalBits.push(volume);
-  if (pages)   journalBits.push(pages);
+    const journalBits = [];
+    if (journal) journalBits.push("<em>" + journal + "</em>");
+    if (year)    journalBits.push("<strong>" + year + "</strong>");
+    if (volume)  journalBits.push(volume);
+    if (pages)   journalBits.push(pages);
 
-  if (journalBits.length) {
-    parts.push(journalBits.join(", ") + ".");
+    if (journalBits.length) {
+      parts.push(journalBits.join(", ") + ".");
+    }
+
+    if (doi) {
+      parts.push("DOI: " + doi + ".");
+    }
+
+    const citationHTML = parts.join(" ");
+
+    let linksHTML = "";
+    if (link) {
+      linksHTML += `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Link</a>`;
+    }
+    if (doi) {
+      const doiUrl = "https://doi.org/" + encodeURIComponent(doi);
+      linksHTML += (linksHTML ? " · " : "");
+      linksHTML += `<a href="${doiUrl}" target="_blank" rel="noopener noreferrer">DOI</a>`;
+    }
+
+    return `
+      <li class="pub-item">
+        <div class="pub-citation">${citationHTML}</div>
+        ${linksHTML ? `<div class="pub-links">${linksHTML}</div>` : ""}
+      </li>
+    `;
   }
-
-  if (doi) {
-    parts.push("DOI: " + doi + ".");
-  }
-
-  const citationHTML = parts.join(" ");
-
-  let linksHTML = "";
-  if (link) {
-    linksHTML += `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Link</a>`;
-  }
-  if (doi) {
-    const doiUrl = "https://doi.org/" + encodeURIComponent(doi);
-    linksHTML += (linksHTML ? " · " : "");
-    linksHTML += `<a href="${doiUrl}" target="_blank" rel="noopener noreferrer">DOI</a>`;
-  }
-
-  return `
-    <li class="pub-item">
-      <div class="pub-citation">${citationHTML}</div>
-      ${linksHTML ? `<div class="pub-links">${linksHTML}</div>` : ""}
-    </li>
-  `;
-}
 
   function loadPublications() {
     const listEl = document.getElementById("pub-list");
@@ -290,6 +316,7 @@
 
 </body>
 </html>
+
 
 
 

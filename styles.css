@@ -753,7 +753,9 @@ nav a.active {
   display: block;
 }
 
-/* ---------- FUNDING ---------- */
+/* ---------- FUNDING (SINGLE ROW DESKTOP) ---------- */
+
+/* wrapper with "SUPPORTED BY" label */
 .footer-funding-block {
   flex: 1;
   display: flex;
@@ -769,26 +771,28 @@ nav a.active {
   opacity: 0.85;
 }
 
-/* 2 rows × 3 columns grid */
+/* single row of 6 equal cards on desktop */
 .footer-funding {
-  display: grid;
-  grid-template-columns: repeat(3, 170px);
-  gap: 1rem 1.8rem;          /* row, column spacing */
-  justify-content: center;   /* center the whole grid */
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  flex-wrap: nowrap;      /* stay on one row on wide screens */
 }
 
+/* equal-size white pills */
 .footer-funding a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 170px;
-  height: 52px;              /* consistent pill height */
+  width: 150px;           /* card width */
+  height: 52px;           /* card height */
   background: #ffffff;
   border-radius: 6px;
   padding: 6px 8px;
 }
 
+/* logos inside the pill */
 .footer-funding img {
   max-width: 100%;
   max-height: 36px;
@@ -801,25 +805,16 @@ nav a.active {
   max-height: 36px;
 }
 
+/* hover */
 .footer-funding a:hover img {
   transform: scale(1.04);
   transition: transform 0.2s ease;
 }
 
-/* responsive: 2 columns on tablets, 1 column on phones */
-@media (max-width: 700px) {
+/* simple mobile tweak: allow wrapping */
+@media (max-width: 900px) {
   .footer-funding {
-    grid-template-columns: repeat(2, 150px);
-  }
-}
-
-@media (max-width: 450px) {
-  .footer-funding {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-funding a {
-    width: 200px;
+    flex-wrap: wrap;
   }
 }
 
@@ -1056,6 +1051,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

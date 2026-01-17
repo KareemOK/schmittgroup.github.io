@@ -2,8 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("recent-publications");
   if (!container) return;
 
-  // grab the CTA (if present)
-  const cta = container.querySelector(".recent-pub-cta");
+  // Create CTA element (like Meet the Team card)
+  const cta = document.createElement("div");
+  cta.className = "recent-pub-cta";
+  cta.innerHTML = `
+    <a href="publications.html" class="pub-cta-link">
+      <div class="pub-cta-icon">→</div>
+      <div class="pub-cta-text">View all publications</div>
+    </a>
+  `;
 
   fetch("publications.json?v=1")
     .then(res => {
@@ -16,13 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // clear everything before we rebuild
+      // Clear before rebuilding
       container.innerHTML = "";
 
-      // sort newest → oldest
+      // Sort newest → oldest
       const sorted = [...items].sort((a, b) => (b.year || 0) - (a.year || 0));
 
-      // take the top 2, since the CTA will be the 3rd card
+      // Show 2 articles, CTA = 3rd card
       const recent = sorted.slice(0, 2);
 
       recent.forEach(pub => {
@@ -37,12 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const doi = (pub.doi || "").trim();
         const link = (pub.link || "").trim();
 
-        // Title: prefer DOI link, then link, else plain text
         let titleHTML = pub.title || "Untitled";
         if (doi) {
-          titleHTML = `<a href="https://doi.org/${encodeURIComponent(
-            doi
-          )}" target="_blank" rel="noopener">${pub.title}</a>`;
+          titleHTML = `<a href="https://doi.org/${encodeURIComponent(doi)}" target="_blank" rel="noopener">${pub.title}</a>`;
         } else if (link) {
           titleHTML = `<a href="${link}" target="_blank" rel="noopener">${pub.title}</a>`;
         }
@@ -52,24 +56,22 @@ document.addEventListener("DOMContentLoaded", () => {
           ${authors ? `<div class="pub-authors">${authors}</div>` : ""}
           <div class="pub-info">
             ${journal ? `<em>${journal}</em>` : ""}${journal && year ? ", " : ""}${year}${
-          volume ? `, <strong>${volume}</strong>` : ""
-        }${pages ? `, ${pages}` : ""}
+              volume ? `, <strong>${volume}</strong>` : ""
+            }${pages ? `, ${pages}` : ""}
           </div>
         `;
 
         container.appendChild(div);
       });
 
-      // re-attach CTA as the last grid item (3rd card)
-      if (cta) {
-        container.appendChild(cta);
-      }
+      // Append CTA as 3rd card
+      container.appendChild(cta);
     })
     .catch(err => {
       console.error(err);
-      container.innerHTML =
-        "<p>Unable to load recent publications.</p>";
+      container.innerHTML = "<p>Unable to load recent publications.</p>";
     });
 });
+
 
 

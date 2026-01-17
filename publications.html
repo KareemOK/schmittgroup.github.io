@@ -166,61 +166,55 @@
       .replaceAll("'", "&#039;");
   }
 
+  // "A and B and C" → "A; B; C"
+  function formatAuthors(str = "") {
+    return str.split(/\s+and\s+/).join("; ");
+  }
+
+  // Build an ACS-style citation from one publication object
   function makePubItem(pub) {
-    const title = escapeHtml(pub.title || "Untitled");
-    const authors = escapeHtml(pub.authors || "");
-    const venue = escapeHtml(pub.venue || "");
-    const year = pub.year ? escapeHtml(pub.year) : "";
-    const doi = pub.doi ? String(pub.doi).trim() : "";
+    const authors = formatAuthors(pub.authors || "");
+    const title   = escapeHtml(pub.title || "Untitled");
+    const journal = escapeHtml(pub.journal || "");
+    const year    = pub.year ? escapeHtml(pub.year) : "";
+    const volume  = escapeHtml(pub.volume || "");
+    const pages   = escapeHtml(pub.pages || "");
+    const doi     = pub.doi ? String(pub.doi).trim() : "";
+    const link    = pub.link || "";
 
-    const doiLink = doi
-      ? `<div class="pub-links">
-           <a href="https://doi.org/${encodeURIComponent(doi)}" target="_blank" rel="noopener noreferrer">
-             <img src="assets/doi.svg" alt="DOI">
-           </a>
-         </div>`
-      : "";
+    const safeAuthors = escapeHtml(authors);
 
-    return `
-      <li class="pub-item">
-        <div class="pub-title">${title}</div>
-        ${authors ? `<div class="pub-authors">${authors}</div>` : ""}
-        <div class="pub-info">
-          ${venue ? `<i>${venue}</i>` : ""}${venue && year ? ", " : ""}${year}
-        </div>
-        ${doiLink}
-      </li>
-    `;
-  }
+    let parts = [];
 
-  async function loadPublications() {
-    const listEl = document.getElementById("pub-list");
-    const errEl = document.getElementById("pub-error");
+    if (safeAuthors) parts.push(safeAuthors + ".");
+    if (title)       parts.push(title + ".");
 
-    try {
-      const res = await fetch("publications.json", { cache: "no-store" });
-      if (!res.ok) throw new Error("HTTP " + res.status);
+    // Journal, year, volume, pages
+    let journalBits = [];
+    if (journal) journalBits.push("<em>" + journal + "</em>");
+    if (year)    journalBits.push("<strong>" + year + "</strong>");
+    if (volume)  journalBits.push(volume);
+    if (pages)   journalBits.push(pages);
 
-      const pubs = await res.json();
-
-      const filtered = (pubs || [])
-        .filter(p => Number(p.year) >= YEAR_CUTOFF)
-        .sort((a, b) => (b.year - a.year) || String(a.title).localeCompare(String(b.title)));
-
-      listEl.innerHTML = filtered.map(makePubItem).join("");
-
-      if (filtered.length === 0) {
-        listEl.innerHTML = `<li class="pub-item"><div class="pub-title">No publications found.</div></li>`;
-      }
-
-    } catch (e) {
-      console.error(e);
-      errEl.style.display = "block";
+    if (journalBits.length) {
+      parts.push(journalBits.join(", ") + ".");
     }
-  }
 
-  loadPublications();
-</script>
+    if (doi) {
+      parts.push("DOI: " + escapeHtml(doi) + ".");
+    }
+
+    const citationHTML = parts.join(" ");
+
+    // Optional Link / DOI buttons under the citation
+    let linksHTML = "";
+    if (link) {
+      linksHTML += `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Link</a>`;
+    }
+    if (doi) {
+      const doiUrl = "https://doi.org/" + encodeURIComponent(doi);
+      linksHTML += (linksHTML ? " · " : "") +
+        `<a href="
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -262,3 +256,4 @@
 
 </body>
 </html>
+

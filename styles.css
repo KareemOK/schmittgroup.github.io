@@ -1068,6 +1068,14 @@ header {
   }
 }
 
+/* Footer contact alignment override */
+.site-footer .footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;  /* left-align items */
+  text-align: left !important;         /* left-align text */
+}
+
 
 
 

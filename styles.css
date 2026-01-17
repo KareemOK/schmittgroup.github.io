@@ -772,8 +772,18 @@ nav a.active {
   align-items: center;
   justify-content: center;
   gap: 1.4rem;
+  flex-wrap: wrap; /* safer when you have 6 logos */
 }
 
+/* make each logo sit inside an equal-width pill */
+.footer-funding a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;       /* tweak 140–180px to taste */
+}
+
+/* normalize logo size inside pills */
 .footer-funding img {
   max-height: 40px;
   width: auto;
@@ -784,9 +794,15 @@ nav a.active {
   object-fit: contain;
 }
 
-/* priority logos no longer larger */
+/* priority no longer bigger */
 .footer-funding img.priority {
   max-height: 40px;
+}
+
+/* hover effect stays the same */
+.footer-funding a:hover img {
+  transform: scale(1.04);
+  transition: transform 0.2s ease;
 }
 
 /* ---------- FOOTER BOTTOM ---------- */
@@ -1022,4 +1038,5 @@ header {
     height: 45px;
   }
 }
+
 

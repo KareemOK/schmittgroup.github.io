@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("pub-list");
   if (!container) return;
 
-  // put this helper near the top so it's easy to find
+  // convert "A and B and C" → "A; B; C"
   const formatAuthors = (str = "") => {
-    // semi-colons between authors
     return str.split(/\s+and\s+/).join("; ");
   };
 
@@ -15,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then(items => {
+      // group by year
       const byYear = {};
       items.forEach(pub => {
         const year = pub.year || "Other";
@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const metaParts = [];
           if (pub.journal) metaParts.push(`<em>${pub.journal}</em>`);
-          if (pub.volume)  metaParts.push(pub.volume);
-          if (pub.pages)   metaParts.push(pub.pages);
+          if (pub.volume) metaParts.push(pub.volume);
+          if (pub.pages) metaParts.push(pub.pages);
 
           const metaLine = metaParts.join(", ");
 
           div.innerHTML = `
-            <p class="pub-title">${pub.title}</p>
+            <p class="pub-title">${pub.title || ""}</p>
             <p class="pub-authors">${formatAuthors(pub.authors || "")}</p>
             ${metaLine ? `<p class="pub-journal">${metaLine}</p>` : ""}
             <div class="pub-links">
@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
+
 
 
 

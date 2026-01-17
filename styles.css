@@ -1109,12 +1109,17 @@ header {
   gap: 0.6rem;
 }
 
-/* Thick arrow icon */
-.pub-cta-icon,
-.team-cta-icon {
-  font-size: 1.9rem;
-  font-weight: 700;
+/* Make both CTA arrows look the same (thicker) */
+.team-cta-icon,
+.pub-cta-icon {
+  font-size: 2rem;   /* same size as the old Meet-the-Team arrow */
   line-height: 1;
+  font-weight: 700;  /* make it nice and thick */
+}
+
+/* keep the vertical spacing for the Meet-the-Team card */
+.team-cta-icon {
+  margin-bottom: 0.5rem;
 }
 
 /* Arrow hover animation */
@@ -1123,6 +1128,7 @@ header {
   transform: translateX(3px);
   transition: transform 0.2s ease;
 }
+
 
 
 

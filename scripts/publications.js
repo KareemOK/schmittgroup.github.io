@@ -3,56 +3,95 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("pub-list");
   if (!container) return;
 
-  // convert "A and B and C" → "A; B; C"
+  // Turn "A and B and C" → "A; B; C"
   const formatAuthors = (str = "") => {
     return str.split(/\s+and\s+/).join("; ");
   };
 
-  fetch("publications.json")
+  const buildCitation = (pub) => {
+    const authorsRaw = pub.authors || "";
+    const authors = formatAuthors(authorsRaw);
+
+    let citation = "";
+
+    if (authors) {
+      citation += authors + ". ";
+    }
+
+    if (pub.title) {
+      citation += pub.title + ". ";
+    }
+
+    // Journal + year + volume/issue + pages
+    const journalBits = [];
+
+    if (pub.journal) {
+      journalBits.push(`<em>${pub.journal}</em>`);
+    }
+
+    if (pub.year) {
+      journalBits.push(pub.year);
+    }
+
+    const volIssue = [];
+    if (pub.volume) {
+      volIssue.push(pub.volume);
+    }
+
+    const issue = pub.issue || pub.number;
+    if (issue) {
+      volIssue.push("(" + issue + ")");
+    }
+
+    if (volIssue.length) {
+      journalBits.push(volIssue.join(" "));
+    }
+
+    if (pub.pages) {
+      journalBits.push(pub.pages);
+    }
+
+    if (journalBits.length) {
+      citation += journalBits.join(", ") + ". ";
+    }
+
+    if (pub.doi) {
+      citation += `DOI: ${pub.doi}.`;
+    }
+
+    return citation;
+  };
+
+  // Add ?cb=... so we always get the latest JSON
+  fetch("publications.json?cb=" + Date.now())
     .then(res => {
       if (!res.ok) throw new Error("Failed to load publications.json");
       return res.json();
     })
     .then(items => {
-      // group by year
-      const byYear = {};
-      items.forEach(pub => {
-        const year = pub.year || "Other";
-        if (!byYear[year]) byYear[year] = [];
-        byYear[year].push(pub);
-      });
+      if (!Array.isArray(items) || items.length === 0) {
+        container.innerHTML = "<li>No publications found.</li>";
+        return;
+      }
 
-      const sortedYears = Object.keys(byYear)
-        .sort((a, b) => parseInt(b) - parseInt(a));
+      // Sort newest → oldest
+      const sorted = [...items].sort((a, b) => (b.year || 0) - (a.year || 0));
 
-      sortedYears.forEach(year => {
-        const yearHeading = document.createElement("h2");
-        yearHeading.textContent = year;
-        container.appendChild(yearHeading);
+      sorted.forEach(pub => {
+        const li = document.createElement("li");
+        li.className = "publication-item";
 
-        byYear[year].forEach(pub => {
-          const div = document.createElement("div");
-          div.className = "publication-item";
+        const citationHTML = buildCitation(pub);
 
-          const metaParts = [];
-          if (pub.journal) metaParts.push(`<em>${pub.journal}</em>`);
-          if (pub.volume) metaParts.push(pub.volume);
-          if (pub.pages) metaParts.push(pub.pages);
+        li.innerHTML = `
+          <p class="pub-citation">${citationHTML}</p>
+          <div class="pub-links">
+            ${pub.link ? `<a href="${pub.link}" target="_blank" rel="noopener">Link</a>` : ""}
+            ${pub.doi && !pub.link ? `<a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener">DOI</a>` : ""}
+          </div>
+        `;
 
-          const metaLine = metaParts.join(", ");
-
-          div.innerHTML = `
-            <p class="pub-title">${formatAuthors(pub.title || "")}</p>
-            <p class="pub-authors">${formatAuthors(pub.authors || "")}</p>
-            ${metaLine ? `<p class="pub-journal">${metaLine}</p>` : ""}
-            <div class="pub-links">
-              ${pub.link ? `<a href="${pub.link}" target="_blank" rel="noopener">Link</a>` : ""}
-              ${pub.doi && !pub.link ? `<a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener">DOI</a>` : ""}
-            </div>
-          `;
-
-          container.appendChild(div);
-        });
+        container.appendChild(li);
       });
     })
     .catch(err => {
@@ -61,6 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
+
 
 
 

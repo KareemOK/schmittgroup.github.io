@@ -155,125 +155,152 @@
 
 <!-- ====== SCRIPTS ====== -->
 <script>
-(function () {
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("pub-list");
+  const errorBox = document.getElementById("pub-error");
+  if (!container) return;
 
-  function escapeHtml(str) {
-    return String(str == null ? "" : str)
+  const escapeHtml = (str = "") =>
+    String(str)
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
-  }
 
-  // "Last, First Middle" → "Last, F. M."
-  // "A and B and C" → "A; B; C" using that transformation
-  function formatAuthorsInitials(str) {
-    return (str || "").split(/\s+and\s+/).map(author => {
+  // Convert author string to ACS-style initials with semicolons
+  function formatAuthorsInitials(str = "") {
+    return str.split(/\s+and\s+/).map(author => {
       author = author.trim();
       if (!author) return "";
 
-      const parts = author.split(",");
-      if (parts.length < 2) {
-        // no comma → leave as-is (e.g. "Seán Hennessey")
-        return author;
+      // Case 1: "Last, First Middle"
+      if (author.includes(",")) {
+        const parts = author.split(",");
+        const last = parts[0].trim();
+        const rest = parts.slice(1).join(" ").trim();
+        if (!rest) return last;
+
+        const initials = rest
+          .split(/\s+/)
+          .filter(Boolean)
+          .map(tok => {
+            tok = tok.replace(/\.$/, "");
+            return tok[0].toUpperCase() + ".";
+          })
+          .join(" ");
+        return `${last}, ${initials}`;
       }
 
-      const last = parts[0].trim();
-      const firstBlock = parts.slice(1).join(" ").trim();
-      if (!firstBlock) return last;
-
-      const tokens = firstBlock.split(/\s+/).filter(Boolean);
-      const initials = tokens.map(tok => {
-        // already like "J." → keep it
-        if (/^[A-Z]\.$/.test(tok)) return tok;
-        // single letter without dot → add dot
-        if (/^[A-Z]$/i.test(tok)) return tok[0].toUpperCase() + ".";
-        // normal name, take first letter
-        return tok[0].toUpperCase() + ".";
-      });
-
-      return `${last}, ${initials.join(" ")}`;
+      // Case 2: "First Middle Last"
+      const tokens = author.split(/\s+/).filter(Boolean);
+      if (tokens.length === 1) {
+        // Mononym: keep as-is (e.g. "Amal")
+        return tokens[0];
+      }
+      const last = tokens[tokens.length - 1];
+      const firsts = tokens.slice(0, -1);
+      const initials = firsts
+        .map(tok => {
+          tok = tok.replace(/\.$/, "");
+          return tok[0].toUpperCase() + ".";
+        })
+        .join(" ");
+      return `${last}, ${initials}`;
     }).filter(Boolean).join("; ");
   }
 
-  function makePubItem(pub) {
-    const authors = escapeHtml(formatAuthorsInitials(pub.authors || ""));
-    const title   = escapeHtml(pub.title || "");
-    const journal = escapeHtml(pub.journal || "");
-    const year    = escapeHtml(pub.year || "");
-    const volume  = escapeHtml(pub.volume || "");
-    const pages   = escapeHtml(pub.pages || "");
-    const doi     = escapeHtml((pub.doi || "").trim());
-    const link    = pub.link || "";
+  const buildCitation = (pub) => {
+    const authors = formatAuthorsInitials(pub.authors || "");
+    let parts = [];
 
-    const parts = [];
+    if (authors) {
+      parts.push(escapeHtml(authors) + ".");
+    }
 
-    if (authors) parts.push(authors + ".");
-    if (title)   parts.push(title + ".");
+    if (pub.title) {
+      parts.push(escapeHtml(pub.title) + ".");
+    }
 
+    // Journal + year + volume/issue + pages
     const journalBits = [];
-    if (journal) journalBits.push("<em>" + journal + "</em>");
-    if (year)    journalBits.push("<strong>" + year + "</strong>");
-    if (volume)  journalBits.push(volume);
-    if (pages)   journalBits.push(pages);
+
+    if (pub.journal) {
+      journalBits.push(`<em>${escapeHtml(pub.journal)}</em>`);
+    }
+
+    if (pub.year) {
+      journalBits.push(`<strong>${escapeHtml(pub.year)}</strong>`);
+    }
+
+    const volIssue = [];
+    if (pub.volume) {
+      volIssue.push(escapeHtml(pub.volume));
+    }
+
+    const issue = pub.issue || pub.number;
+    if (issue) {
+      volIssue.push("(" + escapeHtml(issue) + ")");
+    }
+
+    if (volIssue.length) {
+      journalBits.push(volIssue.join(" "));
+    }
+
+    if (pub.pages) {
+      journalBits.push(escapeHtml(pub.pages));
+    }
 
     if (journalBits.length) {
       parts.push(journalBits.join(", ") + ".");
     }
 
-    if (doi) {
-      parts.push("DOI: " + doi + ".");
+    if (pub.doi) {
+      parts.push("DOI: " + escapeHtml(pub.doi) + ".");
     }
 
-    const citationHTML = parts.join(" ");
+    return parts.join(" ");
+  };
 
-    let linksHTML = "";
-    if (link) {
-      linksHTML += `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Link</a>`;
-    }
-    if (doi) {
-      const doiUrl = "https://doi.org/" + encodeURIComponent(doi);
-      linksHTML += (linksHTML ? " · " : "");
-      linksHTML += `<a href="${doiUrl}" target="_blank" rel="noopener noreferrer">DOI</a>`;
-    }
+  // Add ?cb=... so we always get the latest JSON
+  fetch("publications.json?cb=" + Date.now())
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to load publications.json");
+      return res.json();
+    })
+    .then(items => {
+      if (!Array.isArray(items) || items.length === 0) {
+        container.innerHTML = "<li>No publications found.</li>";
+        return;
+      }
 
-    return `
-      <li class="pub-item">
-        <div class="pub-citation">${citationHTML}</div>
-        ${linksHTML ? `<div class="pub-links">${linksHTML}</div>` : ""}
-      </li>
-    `;
-  }
+      // Sort newest → oldest
+      const sorted = [...items].sort(
+        (a, b) => parseInt(b.year || "0", 10) - parseInt(a.year || "0", 10)
+      );
 
-  function loadPublications() {
-    const listEl = document.getElementById("pub-list");
-    const errEl  = document.getElementById("pub-error");
+      sorted.forEach(pub => {
+        const li = document.createElement("li");
+        li.className = "publication-item";
 
-    fetch("publications.json?cb=" + Date.now(), { cache: "no-store" })
-      .then(res => {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
-      .then(pubs => {
-        if (!Array.isArray(pubs)) pubs = [];
+        const citationHTML = buildCitation(pub);
 
-        const sorted = pubs.sort((a, b) =>
-          Number(b.year || 0) - Number(a.year || 0)
-        );
+        li.innerHTML = `
+          <p class="pub-citation">${citationHTML}</p>
+          <div class="pub-links">
+            ${pub.link ? `<a href="${pub.link}" target="_blank" rel="noopener">Link</a>` : ""}
+            ${pub.doi && !pub.link ? `<a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener">DOI</a>` : ""}
+          </div>
+        `;
 
-        listEl.innerHTML =
-          sorted.map(makePubItem).join("") ||
-          `<li class="pub-item"><div class="pub-citation">No publications found.</div></li>`;
-      })
-      .catch(err => {
-        console.error("Error loading publications:", err);
-        if (errEl) errEl.style.display = "block";
+        container.appendChild(li);
       });
-  }
-
-  document.addEventListener("DOMContentLoaded", loadPublications);
-})();
+    })
+    .catch(err => {
+      console.error(err);
+      if (errorBox) errorBox.style.display = "block";
+    });
+});
 </script>
   
 <script>
@@ -316,6 +343,7 @@
 
 </body>
 </html>
+
 
 
 

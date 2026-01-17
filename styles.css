@@ -91,6 +91,7 @@ nav a.active {
   text-align: center;
   padding: 2rem;
   color: white;
+  padding: 8rem 2rem 4rem;
   background:
     linear-gradient(
       rgba(0, 0, 0, 0.45),
@@ -1075,6 +1076,7 @@ header {
   align-items: flex-start !important;  /* left-align items */
   text-align: left !important;         /* left-align text */
 }
+
 
 
 

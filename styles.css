@@ -415,34 +415,6 @@ nav a.active {
   font-size: 0.9rem;
 }
 
-/* CTA card */
-.team-card-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f5f5f5;
-}
-
-.team-cta-link {
-  text-decoration: none;
-  color: #1E5631;
-  text-align: center;
-  font-weight: 700;
-}
-
-.team-cta-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.team-cta-text {
-  font-size: 1.1rem;
-}
-
-.team-card-cta:hover {
-  background: #e9f4ea;
-}
-
 .pi-profile p {
   max-width: none;
 }
@@ -1078,28 +1050,6 @@ header {
   text-justify: inter-word;
 }
 
-.recent-pub-cta {
-  background: #f5f5f5;
-  border-radius: 10px;
-  padding: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.1rem;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.recent-pub-cta a {
-  color: #1E5631;
-  text-decoration: none;
-}
-
-.recent-pub-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-}
-
 /* Footer contact alignment override */
 .site-footer .footer-contact {
   display: flex;
@@ -1128,7 +1078,9 @@ header {
   }
 }
 
-.recent-pub-cta {
+/* Shared CTA style for Publications + Team */
+.recent-pub-cta,
+.team-card-cta {
   background: #f5f5f5;
   border-radius: 12px;
   padding: 1.5rem;
@@ -1139,12 +1091,15 @@ header {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.recent-pub-cta:hover {
+.recent-pub-cta:hover,
+.team-card-cta:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-.pub-cta-link {
+/* Links inside CTA */
+.pub-cta-link,
+.team-cta-link {
   text-decoration: none;
   color: #1E5631;
   font-weight: 700;
@@ -1154,15 +1109,21 @@ header {
   gap: 0.6rem;
 }
 
-.pub-cta-icon {
+/* Thick arrow icon */
+.pub-cta-icon,
+.team-cta-icon {
   font-size: 1.9rem;
+  font-weight: 700;
   line-height: 1;
 }
 
-.pub-cta-link:hover .pub-cta-icon {
+/* Arrow hover animation */
+.pub-cta-link:hover .pub-cta-icon,
+.team-cta-link:hover .team-cta-icon {
   transform: translateX(3px);
   transition: transform 0.2s ease;
 }
+
 
 
 

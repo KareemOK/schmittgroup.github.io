@@ -664,13 +664,14 @@ nav a.active {
 }
 
 .footer-content {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;   /* center the pair */
-  align-items: flex-start;   /* keep vertical alignment clean */
-  gap: 4rem;                 /* spacing between contact + logos */
-  text-align: left;          /* prevent contact text from being centered */
+  flex-direction: row;      /* ⬅️ horizontal layout */
+  justify-content: center;
+  align-items: flex-start;  /* ⬅️ prevents vertical stretching */
+  gap: 4rem;                /* ⬅️ space between contact + funding blocks */
+  text-align: left;         /* ⬅️ prevents icons text from centering weirdly */
 }
 
 .footer-contact,
@@ -1056,6 +1057,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

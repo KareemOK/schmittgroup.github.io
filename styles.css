@@ -1073,6 +1073,11 @@ header {
   }
 }
 
+.water-splitting-content p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 /* Footer contact alignment override */
 .site-footer .footer-contact {
   display: flex;
@@ -1080,6 +1085,7 @@ header {
   align-items: flex-start !important;  /* left-align items */
   text-align: left !important;         /* left-align text */
 }
+
 
 
 

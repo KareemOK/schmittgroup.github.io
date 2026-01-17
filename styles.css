@@ -664,13 +664,18 @@ nav a.active {
 }
 
 .footer-content {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;     /* stack everything vertically */
-  align-items: center;        /* center horizontally */
-  text-align: center;         /* center text inside blocks */
-  gap: 2rem;                  /* spacing between sections */
+  justify-content: center;   /* center the pair */
+  align-items: flex-start;   /* keep vertical alignment clean */
+  gap: 4rem;                 /* spacing between contact + logos */
+  text-align: left;          /* prevent contact text from being centered */
+}
+
+.footer-contact,
+.footer-funding-block {
+  flex: 0 0 auto;
 }
 
 /* ---------- COMPACT TEAM ---------- */
@@ -1051,6 +1056,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

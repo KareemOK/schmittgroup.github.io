@@ -753,7 +753,6 @@ nav a.active {
 }
 
 /* ---------- FUNDING ---------- */
-/* ---------- FUNDING ---------- */
 .footer-funding-block {
   display: flex;
   flex-direction: column;
@@ -769,10 +768,13 @@ nav a.active {
 }
 
 .footer-funding {
-  display: grid;
-  grid-template-columns: repeat(3, 150px);  /* 3 columns of 150px cards */
-  justify-content: center;                  /* center the 3×2 grid */
-  gap: 1.4rem 2rem;                         /* row / column gaps */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem 2rem;          /* row / column gap */
+  max-width: 520px;          /* ~3 cards per row */
+  margin: 0 auto;            /* center the 3×2 block */
 }
 
 /* each sponsor gets the same-width white pill */
@@ -1040,6 +1042,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

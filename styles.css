@@ -716,6 +716,7 @@ nav a.active {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.6rem;
+  flex: 0 0 220px;
 }
 
 .footer-contact-label {
@@ -1042,6 +1043,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

@@ -97,7 +97,7 @@ nav a.active {
       rgba(0, 0, 0, 0.45),
       rgba(0, 0, 0, 0.45)
     ),
-    url("assets/group2.svg") center / cover no-repeat;
+    url("assets/group3.JPG") center / cover no-repeat;
 }
 
 .hero-title {
@@ -1080,6 +1080,7 @@ header {
   align-items: flex-start !important;  /* left-align items */
   text-align: left !important;         /* left-align text */
 }
+
 
 
 

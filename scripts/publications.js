@@ -3,13 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("pub-list");
   if (!container) return;
 
+  // put this helper near the top so it's easy to find
+  const formatAuthors = (str = "") => {
+    // semi-colons between authors
+    return str.split(/\s+and\s+/).join("; ");
+  };
+
   fetch("publications.json")
     .then(res => {
       if (!res.ok) throw new Error("Failed to load publications.json");
       return res.json();
     })
     .then(items => {
-      // group by year
       const byYear = {};
       items.forEach(pub => {
         const year = pub.year || "Other";
@@ -31,21 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const metaParts = [];
           if (pub.journal) metaParts.push(`<em>${pub.journal}</em>`);
-          if (pub.volume) metaParts.push(pub.volume);
-          if (pub.pages)  metaParts.push(pub.pages);
+          if (pub.volume)  metaParts.push(pub.volume);
+          if (pub.pages)   metaParts.push(pub.pages);
 
           const metaLine = metaParts.join(", ");
 
-          const formatAuthors = (str) => {
-          return str
-         .replace(/\s+and\s+/g, ", ")
-         .replace(/\s*,\s*$/, "");
-        };
-
-
           div.innerHTML = `
             <p class="pub-title">${pub.title}</p>
-            <p class="pub-authors">${formatAuthors(pub.Authors || "")}</p>
+            <p class="pub-authors">${formatAuthors(pub.authors || "")}</p>
             ${metaLine ? `<p class="pub-journal">${metaLine}</p>` : ""}
             <div class="pub-links">
               ${pub.link ? `<a href="${pub.link}" target="_blank" rel="noopener">Link</a>` : ""}
@@ -63,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
 
 
 

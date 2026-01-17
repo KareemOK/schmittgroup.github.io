@@ -155,42 +155,38 @@
 
 <!-- ====== SCRIPTS ====== -->
 <script>
-  const YEAR_CUTOFF = 2007;
+(function () {
 
   function escapeHtml(str) {
-    return String(str ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+    return String(str == null ? "" : str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>//g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
   // "A and B and C" → "A; B; C"
-  function formatAuthors(str = "") {
-    return str.split(/\s+and\s+/).join("; ");
+  function formatAuthors(str) {
+    return (str || "").split(/\s+and\s+/).join("; ");
   }
 
-  // Build an ACS-style citation from one publication object
   function makePubItem(pub) {
-    const authors = formatAuthors(pub.authors || "");
-    const title   = escapeHtml(pub.title || "Untitled");
+    const authors = escapeHtml(formatAuthors(pub.authors || ""));
+    const title   = escapeHtml(pub.title || "");
     const journal = escapeHtml(pub.journal || "");
-    const year    = pub.year ? escapeHtml(pub.year) : "";
+    const year    = escapeHtml(pub.year || "");
     const volume  = escapeHtml(pub.volume || "");
     const pages   = escapeHtml(pub.pages || "");
-    const doi     = pub.doi ? String(pub.doi).trim() : "";
+    const doi     = escapeHtml((pub.doi || "").trim());
     const link    = pub.link || "";
 
-    const safeAuthors = escapeHtml(authors);
+    const parts = [];
 
-    let parts = [];
+    if (authors) parts.push(authors + ".");
+    if (title)   parts.push(title + ".");
 
-    if (safeAuthors) parts.push(safeAuthors + ".");
-    if (title)       parts.push(title + ".");
-
-    // Journal, year, volume, pages
-    let journalBits = [];
+    const journalBits = [];
     if (journal) journalBits.push("<em>" + journal + "</em>");
     if (year)    journalBits.push("<strong>" + year + "</strong>");
     if (volume)  journalBits.push(volume);
@@ -201,20 +197,57 @@
     }
 
     if (doi) {
-      parts.push("DOI: " + escapeHtml(doi) + ".");
+      parts.push("DOI: " + doi + ".");
     }
 
     const citationHTML = parts.join(" ");
 
-    // Optional Link / DOI buttons under the citation
     let linksHTML = "";
     if (link) {
       linksHTML += `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Link</a>`;
     }
     if (doi) {
       const doiUrl = "https://doi.org/" + encodeURIComponent(doi);
-      linksHTML += (linksHTML ? " · " : "") +
-        `<a href="
+      linksHTML += (linksHTML ? " · " : "");
+      linksHTML += `<a href="${doiUrl}" target="_blank" rel="noopener noreferrer">DOI</a>`;
+    }
+
+    return `
+      <li class="pub-item">
+        <div class="pub-citation">${citationHTML}</div>
+        ${linksHTML ? `<div class="pub-links">${linksHTML}</div>` : ""}
+      </li>
+    `;
+  }
+
+  function loadPublications() {
+    const listEl = document.getElementById("pub-list");
+    const errEl  = document.getElementById("pub-error");
+
+    fetch("publications.json?cb=" + Date.now(), { cache: "no-store" })
+      .then(res => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(pubs => {
+        if (!Array.isArray(pubs)) pubs = [];
+
+        const sorted = pubs.sort((a, b) => {
+          return Number(b.year || 0) - Number(a.year || 0);
+        });
+
+        listEl.innerHTML = sorted.map(makePubItem).join("") ||
+          `<li class="pub-item"><div class="pub-citation">No publications found.</div></li>`;
+      })
+      .catch(err => {
+        console.error(err);
+        if (errEl) errEl.style.display = "block";
+      });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadPublications);
+})();
+</script>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -256,4 +289,5 @@
 
 </body>
 </html>
+
 

@@ -664,12 +664,14 @@ nav a.active {
 }
 
 .footer-content {
-  max-width: 900px;          /* match .section width */
+  max-width: 110px;          /* match .section width */
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;   /* line up CONTACT and SUPPORTED BY at the top */
-  justify-content: space-between;
-  gap: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
 }
 
 /* ---------- COMPACT TEAM ---------- */
@@ -1051,6 +1053,7 @@ header {
     height: 45px;
   }
 }
+
 
 
 

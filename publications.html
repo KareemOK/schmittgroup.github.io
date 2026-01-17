@@ -253,7 +253,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (pub.doi) {
-      parts.push("DOI: " + escapeHtml(pub.doi) + ".");
+      const doi = escapeHtml(pub.doi.trim());
+      parts.push(`DOI: <a href="https://doi.org/${doi}" target="_blank" rel="noopener noreferrer">${doi}</a>.`);
     }
 
     return parts.join(" ");
@@ -284,10 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         li.innerHTML = `
           <p class="pub-citation">${citationHTML}</p>
-          <div class="pub-links">
-            ${pub.link ? `<a href="${pub.link}" target="_blank" rel="noopener">Link</a>` : ""}
-            ${pub.doi && !pub.link ? `<a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener">DOI</a>` : ""}
-          </div>
         `;
 
         container.appendChild(li);
@@ -340,6 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 

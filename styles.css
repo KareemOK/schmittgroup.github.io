@@ -753,6 +753,7 @@ nav a.active {
 }
 
 /* ---------- FUNDING ---------- */
+/* ---------- FUNDING ---------- */
 .footer-funding-block {
   display: flex;
   flex-direction: column;
@@ -767,39 +768,40 @@ nav a.active {
   opacity: 0.85;
 }
 
+/* row of equal-size pills */
 .footer-funding {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.4rem;
-  flex-wrap: wrap; /* safer when you have 6 logos */
+  flex-wrap: wrap;
 }
 
-/* make each logo sit inside an equal-width pill */
+/* each sponsor gets the same-width white pill */
 .footer-funding a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;       /* tweak 140–180px to taste */
-}
-
-/* normalize logo size inside pills */
-.footer-funding img {
-  max-height: 40px;
-  width: auto;
-  height: auto;
+  width: 150px;          /* adjust 140–180px if you want */
   background: #ffffff;
   padding: 6px 8px;
   border-radius: 6px;
+}
+
+/* logo just sits inside the pill */
+.footer-funding img {
+  max-height: 32px;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 
-/* priority no longer bigger */
+/* priority logos no longer larger */
 .footer-funding img.priority {
-  max-height: 40px;
+  max-height: 32px;
 }
 
-/* hover effect stays the same */
+/* hover effect */
 .footer-funding a:hover img {
   transform: scale(1.04);
   transition: transform 0.2s ease;
@@ -1038,5 +1040,6 @@ header {
     height: 45px;
   }
 }
+
 
 

@@ -281,18 +281,6 @@ nav a.active {
   color: #555;
 }
 
-.pub-doi-link {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #1E5631;
-  text-decoration: none;
-  margin-left: 0.15rem;
-}
-
-.pub-doi-link:hover {
-  text-decoration: underline;
-}
-
 /* Better line breaking / hyphenation in recent pubs */
 .recent-pub-item,
 .recent-pub-item .pub-title,
@@ -302,23 +290,6 @@ nav a.active {
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   word-wrap: break-word;
-}
-
-.pub-doi-link {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 0.2rem;
-}
-
-.pub-doi-link img {
-  width: 16px;
-  height: 16px;
-  display: block;
-  opacity: 0.85;
-}
-
-.pub-doi-link:hover img {
-  opacity: 1;
 }
 
 /* ---------- COMPACT NEWS ITEM ---------- */
@@ -1259,6 +1230,7 @@ header {
   justify-content: center;
   text-align: center;
 }
+
 
 
 

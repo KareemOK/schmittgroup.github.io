@@ -273,25 +273,24 @@ nav a.active {
 .recent-pub-item .pub-authors {
   font-size: 0.95rem;
   color: #333;
+  margin-bottom: 0.25rem;
 }
 
 .recent-pub-item .pub-info {
-  color: #555;
   font-size: 0.9rem;
-  margin-bottom: 0.6rem;
+  color: #555;
 }
 
-.recent-pub-item .pub-links img,
-.pub-links img {
-  width: 16px;
-  height: 16px;
-  opacity: 0.85;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+.pub-doi-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1E5631;
+  text-decoration: none;
+  margin-left: 0.15rem;
 }
 
-.pub-links img:hover {
-  opacity: 1;
-  transform: scale(1.1);
+.pub-doi-link:hover {
+  text-decoration: underline;
 }
 
 /* ---------- COMPACT NEWS ITEM ---------- */
@@ -1138,6 +1137,7 @@ header {
   transform: translateX(3px);
   transition: transform 0.2s ease;
 }
+
 
 
 

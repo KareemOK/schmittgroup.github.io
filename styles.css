@@ -1166,6 +1166,56 @@ header {
   transition: transform 0.2s ease;
 }
 
+/* Better text wrapping for pub cards */
+.pub-title,
+.pub-authors,
+.pub-info {
+  hyphens: auto;
+}
+
+/* Make publication cards flex so DOI button sits at the bottom nicely if needed */
+.recent-pub-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Wrapper that centers the DOI button */
+.pub-doi-wrap {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Big pill DOI button with icon */
+.pub-doi-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: #f0f0f0;
+  text-decoration: none;
+  color: #1E5631;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pub-doi-button img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.pub-doi-button:hover {
+  background: #e2f2e0;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+
+
 
 
 

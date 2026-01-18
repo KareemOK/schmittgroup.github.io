@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ====== BASICS ====== -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -15,24 +15,20 @@
 
   <link rel="canonical" href="https://schmittgroup.ie/publications/" />
 
-  <!-- ====== FONTS & CSS ====== -->
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
   <link href="styles.css" rel="stylesheet" />
 
-  <!-- ====== OPEN GRAPH ====== -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Schmitt Group — Publications" />
   <meta property="og:description" content="Publications from the Schmitt Group at Trinity College Dublin in inorganic and materials chemistry." />
   <meta property="og:image" content="assets/og-preview.png" />
   <meta property="og:image:alt" content="Schmitt Group research on catalytic water splitting and direct air capture at Trinity College Dublin" />
 
-  <!-- ====== TWITTER / X ====== -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Schmitt Group — Publications" />
   <meta name="twitter:description" content="Research publications from the Schmitt Group at Trinity College Dublin." />
   <meta name="twitter:image" content="assets/og-preview.png" />
 
-  <!-- ====== STRUCTURED DATA: ORGANIZATION ====== -->
  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -62,7 +58,6 @@
 
 <body>
 
-<!-- ====== HEADER ====== -->
 <header>
   <div class="header-top">
     <a href="index.html" class="logo-container">
@@ -85,7 +80,6 @@
   </nav>
 </header>
 
-<!-- ====== MAIN CONTENT ====== -->
 <main>
   <section class="section" aria-labelledby="publications-heading">
     <h1 id="publications-heading">Publications</h1>
@@ -100,7 +94,6 @@
   </section>
 </main>
 
-<!-- ====== FOOTER ====== -->
 <footer class="site-footer">
   <div class="footer-content">
 
@@ -153,7 +146,6 @@
   </div>
 </footer>
 
-<!-- ====== SCRIPTS ====== -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("pub-list");
@@ -173,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
     author = author.trim();
     if (!author) return "";
 
-    // Case 1: "Last, First Middle"
     if (author.includes(",")) {
       const parts = author.split(",");
       const last = parts[0].trim();
@@ -188,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return `${last}, ${initials}`.replace(/\.+$/, "");
     }
 
-    // Case 2: "First Middle Last"
     const tokens = author.split(/\s+/).filter(Boolean);
     if (tokens.length === 1) {
       // single-name mononym, keep as-is
@@ -219,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
       parts.push(escapeHtml(pub.title) + ".");
     }
 
-    // Journal + year + volume/issue + pages
     const journalBits = [];
 
     if (pub.journal) {
@@ -274,7 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Sort newest → oldest
       const sorted = [...items].sort(
         (a, b) => parseInt(b.year || "0", 10) - parseInt(a.year || "0", 10)
       );
@@ -339,6 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 

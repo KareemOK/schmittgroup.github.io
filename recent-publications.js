@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       container.innerHTML = "";
 
-      // newest → oldest
       const sorted = [...items].sort((a, b) => (b.year || 0) - (a.year || 0));
       const recent = sorted.slice(0, 2); // 2 cards + CTA = 3
 
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const pages = pub.pages || "";
         const doi = (pub.doi || "").trim();
 
-        // ACS-ish info line: *Journal* Year, Volume, pages.
         const infoBits = [];
         if (journal) infoBits.push(`<em>${journal}</em>`);
         if (year) infoBits.push(year);
@@ -45,10 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const infoLine = infoBits.join(", ");
 
-        // strip any trailing dots, we’ll add exactly one
         const cleanInfo = infoLine.replace(/\.*$/, "");
 
-        // DOI button
         let doiButtonHTML = "";
         if (doi) {
           const doiUrl = `https://doi.org/${encodeURIComponent(doi)}`;
@@ -83,11 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
       container.innerHTML = "<p>Unable to load recent publications.</p>";
     });
 
-  // ---------- Helper: ACS-style authors ----------
   function formatAuthorsACS(raw) {
     if (!raw) return "";
 
-    // Prefer splitting on semicolons; fall back to " and "
     let parts;
     if (raw.includes(";")) {
       parts = raw.split(";").map(p => p.trim()).filter(Boolean);
@@ -104,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function formatSingleAuthorACS(author) {
     if (!author) return "";
 
-    // Case 1: "Surname, First Middle"
     if (author.includes(",")) {
       const chunks = author.split(",");
       const surname = chunks[0].trim();
@@ -116,7 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
         n => n.length <= 2 || /^[A-Za-z]\.$/.test(n)
       );
       if (allInitialLike) {
-        // Already "P." / "S. V." style – keep as-is
         return `${surname}, ${givenNames}`;
       }
 
@@ -126,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return `${surname}, ${initials}`;
     }
 
-    // Case 2: "First Middle Last"
     const bits = author.split(/\s+/).filter(Boolean);
     if (bits.length === 1) return author.trim();
 
@@ -147,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${surname}, ${initials}`;
   }
 });
+
 
 
 

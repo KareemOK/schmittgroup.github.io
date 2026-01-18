@@ -59,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
         div.innerHTML = `
           <div class="pub-title">${title}</div>
           ${authorsACS ? `<div class="pub-authors">${authorsACS}.</div>` : ""}
-          <div class="pub-info">${infoLine ? `${infoLine}.` : ""}</div>
+let cleanInfo = infoLine.replace(/\.*$/, "");
+<div class="pub-info">${cleanInfo}.</div>
           ${doiButtonHTML}
         `;
 
@@ -139,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${surname}, ${initials}`;
   }
 });
+
 
 
 

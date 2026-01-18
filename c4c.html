@@ -345,12 +345,10 @@
   document.addEventListener("DOMContentLoaded", () => {
     let current = location.pathname;
 
-    // Normalize trailing slash
     if (current.endsWith("/")) {
       current = current.slice(0, -1);
     }
 
-    // Extract filename or last path segment
     current = current.split("/").pop() || "index.html";
 
     document.querySelectorAll(".main-nav a").forEach(link => {
@@ -379,6 +377,7 @@
 
 </body>
 </html>
+
 
 
 

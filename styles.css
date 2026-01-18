@@ -1239,6 +1239,16 @@ header {
   justify-content: space-between; /* pushes DOI to bottom */
 }
 
+.recent-pub-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.pub-info {
+  margin-bottom: auto;
+}
+
+
 
 
 

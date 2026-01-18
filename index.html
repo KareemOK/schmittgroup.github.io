@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-  <!-- =====================================================
-       BASIC METADATA
-       ===================================================== -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Kareem Ouhalla Knipschild" />
@@ -16,12 +14,8 @@
         content="The Schmitt Group at Trinity College Dublin is an inorganic and materials research group. They conduct research on catalytic water splitting and direct air capture, utilising supramolecular chemistry (MOFs, coordination cages), carbon nanomaterials, and many other materials." />
   <meta name="robots" content="index, follow" />
 
-  <!-- TODO: Confirm canonical URL once site is deployed -->
   <link rel="canonical" href="https://schmittgroup.ie/" />
 
-  <!-- =====================================================
-       SOCIAL PREVIEW (OPEN GRAPH + TWITTER)
-       ===================================================== -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Schmitt Group at Trinity College Dublin" />
   <meta property="og:description"
@@ -37,18 +31,10 @@
         content="Research group at Trinity College Dublin focusing on catalytic water splitting, direct air capture, and advanced materials chemistry." />
   <meta name="twitter:image" content="https://schmittgroup.ie/assets/og-preview.png" />
 
-  <!-- =====================================================
-       STYLES & FONTS
-       ===================================================== -->
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
         rel="stylesheet">
   <link href="styles.css" rel="stylesheet" />
 
-  <!-- =====================================================
-       STRUCTURED DATA (SCHEMA.ORG)
-       ===================================================== -->
-
-  <!-- Research Group -->
  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -75,7 +61,6 @@
   }
   </script>
 
-  <!-- Principal Investigator -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -126,7 +111,6 @@
   }
   </script>
 
-  <!-- Website authorship -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -145,9 +129,6 @@
 
 <body>
 
-  <!-- =====================================================
-       HEADER & NAVIGATION
-       ===================================================== -->
   <header>
     <div class="header-top">
     <a href="index.html" class="logo-container">
@@ -161,7 +142,6 @@
               aria-expanded="false">☰</button>
     </div>
 
-    <!-- TODO: Switch to clean URLs on deployment -->
     <nav class="main-nav" id="site-nav">
       <a href="index.html">Home</a>
       <a href="publications.html">Publications</a>
@@ -171,9 +151,6 @@
     </nav>
   </header>
 
-  <!-- =====================================================
-       HERO SECTION
-       ===================================================== -->
 <section class="hero">
   <div class="hero-content">
     <h1 class="hero-title">Schmitt Group</h1>
@@ -191,9 +168,6 @@
   </div>
 </section>
 
-  <!-- =====================================================
-       CONTENT SECTIONS
-       ===================================================== -->
   <section class="section">
     <h2>Recent News</h2>
     <div id="news-list" class="news-list"></div>
@@ -237,7 +211,6 @@
     </div>
   </section>
 
-  <!-- ====== FOOTER ====== -->
 <footer class="site-footer">
   <div class="footer-content">
 
@@ -289,10 +262,7 @@
     © 2025 Schmitt Group
   </div>
 </footer>
-  
-  <!-- =====================================================
-       SCRIPTS
-       ===================================================== -->
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const toggle = document.querySelector(".nav-toggle");
@@ -311,7 +281,6 @@
   <script src="news.js"></script>
   <script src="recent-publications.js"></script>
 
-  <!-- TODO: Update active-link logic when switching to clean URLs -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const current = location.pathname.split("/").pop();
@@ -325,6 +294,7 @@
 
 </body>
 </html>
+
 
 
 

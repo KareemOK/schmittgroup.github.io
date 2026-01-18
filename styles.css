@@ -1180,39 +1180,51 @@ header {
   height: 100%;
 }
 
-/* Wrapper that centers the DOI button */
 .pub-doi-wrap {
   margin-top: 0.75rem;
   display: flex;
   justify-content: center;
 }
 
-/* Big pill DOI button with icon */
 .pub-doi-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.95rem;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: #f0f0f0;
+  background: #f2f2f2;
   text-decoration: none;
   color: #1E5631;
   font-weight: 600;
-  font-size: 0.85rem;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.8rem;
+  line-height: 1;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .pub-doi-button img {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   display: block;
 }
 
 .pub-doi-button:hover {
-  background: #e2f2e0;
+  background: #e7f3e6;
   transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 }
+
+@media (max-width: 550px) {
+  .pub-doi-button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  .pub-doi-button img {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+
+
 
 
 

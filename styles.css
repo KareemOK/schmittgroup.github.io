@@ -293,6 +293,34 @@ nav a.active {
   text-decoration: underline;
 }
 
+/* Better line breaking / hyphenation in recent pubs */
+.recent-pub-item,
+.recent-pub-item .pub-title,
+.recent-pub-item .pub-authors,
+.recent-pub-item .pub-info {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  word-wrap: break-word;
+}
+
+.pub-doi-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.2rem;
+}
+
+.pub-doi-link img {
+  width: 16px;
+  height: 16px;
+  display: block;
+  opacity: 0.85;
+}
+
+.pub-doi-link:hover img {
+  opacity: 1;
+}
+
 /* ---------- COMPACT NEWS ITEM ---------- */
 .news-item-compact {
   padding: 0.9rem 1.1rem;
@@ -1137,6 +1165,7 @@ header {
   transform: translateX(3px);
   transition: transform 0.2s ease;
 }
+
 
 
 

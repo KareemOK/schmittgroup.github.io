@@ -1225,6 +1225,19 @@ header {
   text-align: center;
 }
 
+.logo-container {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-container .logo-text {
+  color: #1E5631; /* ensure no visited/blue link */
+}
+
+
 
 
 

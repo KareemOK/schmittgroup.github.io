@@ -1244,9 +1244,24 @@ header {
   flex-direction: column;
 }
 
-.pub-info {
-  margin-bottom: auto;
+.recent-pub-item,
+.recent-pub-cta {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
+
+/* center content in CTA */
+.recent-pub-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+
 
 
 

@@ -56,10 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="pub-info">
             ${infoLine ? `${infoLine}.` : ""}
             ${doi
-              ? ` <a href="https://doi.org/${encodeURIComponent(
-                  doi
-                )}" target="_blank" rel="noopener" class="pub-doi-link">DOI</a>`
-              : ""}
+  ? ` <a href="https://doi.org/${encodeURIComponent(
+      doi
+    )}" target="_blank" rel="noopener" class="pub-doi-link">
+        <img src="assets/doi.svg" alt="DOI link">
+      </a>`
+  : ""}
+
           </div>
         `;
 
@@ -116,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return formatted.join("; ");
   }
 });
+
 
 
 

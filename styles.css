@@ -1180,6 +1180,7 @@ header {
   height: 100%;
 }
 
+/* === Recent publications DOI button === */
 .pub-doi-wrap {
   margin-top: 0.9rem;
   display: flex;
@@ -1189,22 +1190,26 @@ header {
 .pub-doi-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  background: #f4f4f4;
+  gap: 0.4rem;
   text-decoration: none;
-  color: #1E5631;
-  font-weight: 600;
-  font-size: 0.85rem;
-  line-height: 1;
-  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: transparent;
 }
 
 .pub-doi-button img {
-  width: 18px;
-  height: 18px;
-  display: block;
+  width: 26px;   /* ← force same size everywhere */
+  height: 26px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.pub-doi-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #1E5631;
 }
 
 .pub-doi-button:hover {
@@ -1222,6 +1227,7 @@ header {
     height: 16px;
   }
 }
+
 
 
 

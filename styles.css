@@ -1228,6 +1228,19 @@ header {
   }
 }
 
+#recent-publications {
+  align-items: stretch; /* ensures all columns stretch */
+}
+
+.recent-pub-item,
+.recent-pub-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* pushes DOI to bottom */
+}
+
+
+
 
 
 

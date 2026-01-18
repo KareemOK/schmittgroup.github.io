@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { 
   const container = document.getElementById("recent-publications");
   if (!container) return;
 
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       container.innerHTML = "";
 
+      // newest → oldest
       const sorted = [...items].sort((a, b) => (b.year || 0) - (a.year || 0));
       const recent = sorted.slice(0, 2); // 2 cards + CTA = 3
 
@@ -41,9 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (year) infoBits.push(year);
         if (volume) infoBits.push(`<strong>${volume}</strong>`);
         if (pages) infoBits.push(pages);
+
         const infoLine = infoBits.join(", ");
 
-        // DOI button (big centered)
+        // strip any trailing dots, we’ll add exactly one
+        const cleanInfo = infoLine.replace(/\.*$/, "");
+
+        // DOI button
         let doiButtonHTML = "";
         if (doi) {
           const doiUrl = `https://doi.org/${encodeURIComponent(doi)}`;
@@ -59,8 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         div.innerHTML = `
           <div class="pub-title">${title}</div>
           ${authorsACS ? `<div class="pub-authors">${authorsACS}.</div>` : ""}
-let cleanInfo = infoLine.replace(/\.*$/, "");
-<div class="pub-info">${cleanInfo}.</div>
+          ${cleanInfo ? `<div class="pub-info">${cleanInfo}.</div>` : ""}
           ${doiButtonHTML}
         `;
 
@@ -140,6 +144,8 @@ let cleanInfo = infoLine.replace(/\.*$/, "");
     return `${surname}, ${initials}`;
   }
 });
+
+
 
 
 

@@ -1,4 +1,3 @@
-/* ---------- GLOBAL STYLES ---------- */
 body {
   margin: 0;
   font-family: "Atkinson Hyperlegible", sans-serif;
@@ -14,7 +13,6 @@ h2 {
   margin-top: 0;
 }
 
-/* ---------- HEADER & NAVIGATION ---------- */
 header {
   display: flex;
   justify-content: space-between;
@@ -36,7 +34,6 @@ header {
   }
 }
 
-/* ---------- LOGO WITH TCD ---------- */
 .logo-container {
   display: flex;
   align-items: center;
@@ -81,7 +78,6 @@ nav a.active {
   font-weight: 700;
 }
 
-/* ---------- HERO SECTION ---------- */
 .hero {
   height: 65vh;
   display: flex;
@@ -163,7 +159,6 @@ nav a.active {
   margin-top: 8rem; /* adjust as needed */
 }
 
-/* ---------- GENERIC BUTTONS ---------- */
 .button {
   display: inline-block;
   padding: 0.8rem 1.5rem;
@@ -181,14 +176,12 @@ nav a.active {
   transform: translateY(-2px);
 }
 
-/* ---------- PAGE SECTION WRAPPER ---------- */
 .section {
   padding: 3rem 2rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* ---------- NEWS & ANNOUNCEMENTS ---------- */
 .news-list {
   display: flex;
   flex-direction: column;
@@ -245,7 +238,6 @@ nav a.active {
   text-decoration: underline;
 }
 
-/* ---------- RECENT PUBLICATIONS ---------- */
 .recent-pubs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -281,7 +273,6 @@ nav a.active {
   color: #555;
 }
 
-/* Better line breaking / hyphenation in recent pubs */
 .recent-pub-item,
 .recent-pub-item .pub-title,
 .recent-pub-item .pub-authors,
@@ -292,7 +283,6 @@ nav a.active {
   word-wrap: break-word;
 }
 
-/* ---------- COMPACT NEWS ITEM ---------- */
 .news-item-compact {
   padding: 0.9rem 1.1rem;
   background: #fafafa;
@@ -367,7 +357,6 @@ nav a.active {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* ---------- MEET THE TEAM ---------- */
 .homepage-team {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -433,7 +422,6 @@ nav a.active {
   margin: 2rem 0 3rem;
 }
 
-/* ---------- DAC COMPANY LINKS ---------- */
 .dac-companies {
   display: grid;
   grid-template-columns: repeat(auto-fit, 220px);
@@ -483,7 +471,6 @@ nav a.active {
   max-height: 30px;
 }
 
-/* ---------- FUNDING LOGOS ---------- */
 .funding-logos {
   display: flex;
   justify-content: center;
@@ -512,7 +499,6 @@ nav a.active {
   }
 }
 
-/* ---------- MEMBERS PAGE ---------- */
 .member-name {
   font-size: 1.15rem;
   font-weight: 700;
@@ -603,7 +589,6 @@ nav a.active {
   text-decoration: underline;
 }
 
-/* ---------- INLINE ICONS ---------- */
 .linkedin-inline img,
 .orcid-inline img,
 .scholar-inline img {
@@ -620,7 +605,6 @@ nav a.active {
   transform: scale(1.1);
 }
 
-/* ---------- FOOTER ---------- */
 .site-footer {
   background: #1E5631;
   color: white;
@@ -642,11 +626,11 @@ nav a.active {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  flex-direction: row;      /* ⬅️ horizontal layout */
+  flex-direction: row; 
   justify-content: center;
-  align-items: flex-start;  /* ⬅️ prevents vertical stretching */
-  gap: 4rem;                /* ⬅️ space between contact + funding blocks */
-  text-align: left;         /* ⬅️ prevents icons text from centering weirdly */
+  align-items: flex-start;
+  gap: 4rem;
+  text-align: left; 
 }
 
 .footer-contact,
@@ -663,7 +647,6 @@ nav a.active {
   }
 }
 
-/* ---------- COMPACT TEAM ---------- */
 .members-grid.members-grid-compact {
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.2rem;
@@ -701,7 +684,6 @@ nav a.active {
   opacity: 0.85;
 }
 
-/* ---------- CONTACT ---------- */
 .footer-contact {
   display: flex;
   flex-direction: column;
@@ -744,9 +726,6 @@ nav a.active {
   display: block;
 }
 
-/* ---------- FUNDING (SINGLE ROW DESKTOP) ---------- */
-
-/* wrapper with "SUPPORTED BY" label */
 .footer-funding-block {
   flex: 1;
   display: flex;
@@ -762,16 +741,14 @@ nav a.active {
   opacity: 0.85;
 }
 
-/* single row of 6 equal cards on desktop */
 .footer-funding {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.4rem;
-  flex-wrap: nowrap;      /* stay on one row on wide screens */
+  flex-wrap: nowrap; 
 }
 
-/* equal-size white pills */
 .footer-funding a {
   display: flex;
   align-items: center;
@@ -783,7 +760,6 @@ nav a.active {
   padding: 6px 8px;
 }
 
-/* logos inside the pill */
 .footer-funding img {
   max-width: 100%;
   max-height: 36px;
@@ -796,20 +772,17 @@ nav a.active {
   max-height: 36px;
 }
 
-/* hover */
 .footer-funding a:hover img {
   transform: scale(1.04);
   transition: transform 0.2s ease;
 }
 
-/* simple mobile tweak: allow wrapping */
 @media (max-width: 900px) {
   .footer-funding {
     flex-wrap: wrap;
   }
 }
 
-/* ---------- FOOTER BOTTOM ---------- */
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
@@ -817,7 +790,6 @@ nav a.active {
   opacity: 0.85;
 }
 
-/* ---------- RESPONSIVE ---------- */
 @media (max-width: 700px) {
   .footer-content {
     flex-direction: column;
@@ -838,16 +810,10 @@ nav a.active {
   transition: transform 0.2s ease;
 }
 
-/* =====================================================
-   MOBILE NAV TOGGLE
-   ===================================================== */
-
-/* Required for dropdown positioning */
 header {
   position: relative;
 }
 
-/* ---------- Desktop defaults ---------- */
 .nav-toggle {
   display: none;
   font-size: 1.8rem;
@@ -863,7 +829,6 @@ header {
   gap: 1.8rem;
 }
 
-/* ---------- Mobile ---------- */
 @media (max-width: 768px) {
 
   header {
@@ -913,7 +878,6 @@ header {
   }
 }
 
-/* ---------- PI PROFILE ---------- */
 .members-grid-single {
   grid-template-columns: 1fr;
 }
@@ -992,10 +956,6 @@ header {
   }
 }
 
-/* ==============================
-   C4C HEADER — FINAL (ACTUALLY)
-   ============================== */
-
 .section.c4c-header {
   max-width: 900px;
   margin: 0 auto;
@@ -1003,7 +963,6 @@ header {
   padding-bottom: 3rem;
 }
 
-/* title left, logo right */
 .c4c-top {
   display: flex;
   justify-content: space-between;
@@ -1021,7 +980,6 @@ header {
   flex-shrink: 0;
 }
 
-/* content aligns with title */
 .c4c-content {
   margin: 0;
   text-align: justify;
@@ -1031,7 +989,6 @@ header {
   margin: 0 0 1rem;
 }
 
-/* mobile */
 @media (max-width: 768px) {
   .c4c-top {
     flex-direction: column;
@@ -1048,7 +1005,6 @@ header {
   text-justify: inter-word;
 }
 
-/* Footer contact alignment override */
 .site-footer .footer-contact {
   display: flex;
   flex-direction: column;
@@ -1076,7 +1032,6 @@ header {
   }
 }
 
-/* Shared CTA style for Publications + Team */
 .recent-pub-cta,
 .team-card-cta {
   background: #f5f5f5;
@@ -1095,7 +1050,6 @@ header {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Links inside CTA */
 .pub-cta-link,
 .team-cta-link {
   text-decoration: none;
@@ -1107,15 +1061,12 @@ header {
   gap: 0.6rem;
 }
 
-/* Make both CTA arrows match exactly */
 .team-cta-icon,
 .pub-cta-icon {
-  /* hide the original arrow character inside */
   font-size: 0;
   line-height: 0;
 }
 
-/* draw a new, thick arrow via pseudo-element */
 .team-cta-icon::before,
 .pub-cta-icon::before {
   content: "→";
@@ -1124,27 +1075,22 @@ header {
   line-height: 1;
 }
 
-/* extra vertical spacing for the Meet-the-Team arrow */
 .team-cta-icon::before {
   display: block;
   margin-bottom: 0.5rem;
 }
 
-/* Arrow hover animation */
 .pub-cta-link:hover .pub-cta-icon::before,
 .team-cta-link:hover .team-cta-icon::before {
   transform: translateX(3px);
   transition: transform 0.2s ease;
 }
 
-/* Better text wrapping for pub cards */
 .pub-title,
 .pub-authors,
 .pub-info {
   hyphens: auto;
 }
-
-/* === Recent publications DOI button === */
 
 .pub-doi-wrap {
   margin-top: 1.1rem;
@@ -1156,7 +1102,7 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.3rem 0.85rem;      /* ← overall pill size */
+  padding: 0.3rem 0.85rem;
   border-radius: 999px;
   background: #ffffff;
   text-decoration: none;
@@ -1164,7 +1110,7 @@ header {
 }
 
 .pub-doi-button img {
-  width: 28px;                  /* ← icon size */
+  width: 28px;
   height: 28px;
   object-fit: contain;
   flex-shrink: 0;
@@ -1194,14 +1140,14 @@ header {
 }
 
 #recent-publications {
-  align-items: stretch; /* ensures all columns stretch */
+  align-items: stretch;
 }
 
 .recent-pub-item,
 .recent-pub-cta {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* pushes DOI to bottom */
+  justify-content: space-between;
 }
 
 .recent-pub-item {
@@ -1217,7 +1163,6 @@ header {
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-/* center content in CTA */
 .recent-pub-cta {
   display: flex;
   align-items: center;
@@ -1234,8 +1179,9 @@ header {
 }
 
 .logo-container .logo-text {
-  color: #1E5631; /* ensure no visited/blue link */
+  color: #1E5631;
 }
+
 
 
 

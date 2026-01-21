@@ -1183,51 +1183,49 @@ header {
 }
 
 /* ============================
-   MOBILE HERO (uses group-mobile.JPG)
+   MOBILE HERO – group-mobile.JPG
    ============================ */
 @media (max-width: 700px) {
 
   .hero {
+    /* use the tall mobile photo */
     background:
       linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-      url("assets/group-mobile.JPG") center / cover no-repeat;
-    height: 75vh;               /* taller viewport height */
-    padding: 1rem 1rem 0;       /* reduce vertical padding */
+      url("assets/group-mobile.JPG") center top / cover no-repeat;
+    height: 90vh;                 /* a bit taller so more of the group shows */
+    padding: 0.5rem 1rem 0.5rem;   /* minimal vertical padding */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;  /* place text toward bottom */
+    justify-content: flex-end;    /* content sits near the bottom of the image */
     align-items: center;
     text-align: center;
   }
 
-  /* Move content card over the bottom of the image */
   .hero-content {
     width: 92%;
     max-width: 420px;
-    background: white;
-    padding: 1.5rem 1.25rem;
+    background: #ffffff;
+    padding: 1.4rem 1.2rem;
     border-radius: 18px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    margin-bottom: -2.5rem; /* overlaps below edge for nice reveal */
+    margin-bottom: -1.8rem;       /* slightly less overlap so more image is visible */
     position: relative;
     z-index: 2;
   }
 
-  /* Title + paragraph spacing */
   .hero-title {
     font-size: 1.8rem;
     margin-bottom: 0.75rem;
-    color: #1e5631;
+    color: #1E5631;
   }
 
   .hero-subtitle {
     font-size: 0.95rem;
     line-height: 1.45;
     color: #333;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
   }
 
-  /* Buttons sizing */
   .hero-buttons {
     width: 100%;
     display: flex;
@@ -1241,13 +1239,14 @@ header {
     padding: 0.75rem 1rem;
   }
 
-  /* Push next section down comfortably */
+  /* push the next section down a bit so it doesn't crash into the card */
   .section,
   #recent-news,
   #recent-publications {
-    margin-top: 3.5rem !important;
+    margin-top: 3.25rem !important;
   }
 }
+
 
 
 

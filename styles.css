@@ -1210,6 +1210,7 @@ header {
     background:
       linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
       url("assets/group-mobile.JPG") center / contain no-repeat #000;
+    background-size: cover;
   }
 
   /* The white card */
@@ -1255,6 +1256,7 @@ header {
     color: #0A1A0A; /* dark greenish/black */
   }
 }
+
 
 
 

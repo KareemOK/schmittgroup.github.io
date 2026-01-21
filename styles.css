@@ -1205,7 +1205,7 @@ header {
         rgba(0, 0, 0, 0.35)
       ),
       url("assets/group3.JPG") center / contain no-repeat;
-    margin: 0 -1.25rem -40px;     /* ⬅ bleed edge-to-edge AND overlap card */
+    margin: 0 -1.25rem -60px;     /* ⬅ bleed edge-to-edge AND overlap card */
   }
 
   /* floating card */
@@ -1245,6 +1245,7 @@ header {
     max-width: 260px;
   }
 }
+
 
 
 

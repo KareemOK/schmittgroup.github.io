@@ -1207,7 +1207,7 @@ header {
     height: 220px; /* tweak this up/down for more/less image */
     background:
       linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-      url("assets/group-mobile2.JPG") center top / contain no-repeat;
+      url("assets/group-mobile.JPG") center top / contain no-repeat;
     background-color: #000; /* shows at edges if image isn’t wide enough */
   }
 
@@ -1237,10 +1237,11 @@ header {
     flex-direction: column;
     gap: 0.75rem;
     justify-content: center;
+    align-items: center;
   }
 
   .hero-button {
-    width: 100%;
+    width: 80%;
     max-width: 260px;
     margin: 0 auto;
   }
@@ -1253,6 +1254,7 @@ header {
     color: #0A1A0A;
   }
 }
+
 
 
 

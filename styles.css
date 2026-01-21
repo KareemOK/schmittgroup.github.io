@@ -1182,40 +1182,33 @@ header {
   color: #1E5631;
 }
 
-/* ============================
-   MOBILE HERO LAYOUT (≤ 600px)
-   ============================ */
 @media (max-width: 600px) {
 
   .hero {
     position: relative;
     height: auto;
-    padding: 0 1.5rem 2.5rem;   /* side padding + space under card */
-    background: transparent;    /* no grey stripe behind the card */
-    display: block;             /* cancel desktop flex centering */
+    padding: 0 1.5rem 2.5rem;
+    background: transparent;
+    display: block;
     text-align: center;
   }
 
   .hero::before {
     content: "";
     display: block;
-
-    /* full-bleed: extend to viewport edges */
     width: 100vw;
     margin: 0 calc(-50vw + 50%);
-
-    height: 220px; /* tweak this up/down for more/less image */
+    height: 220px;
     background:
       linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
       url("assets/group-mobile.JPG") center top / contain no-repeat;
-    background-color: #000; /* shows at edges if image isn’t wide enough */
+    background-color: #000;
   }
 
-  /* The white card */
   .hero-content {
     position: relative;
     max-width: 360px;
-    margin: -40px auto 0;       /* pull card up over bottom of image */
+    margin: -40px auto 0;
     background: #ffffff;
     border-radius: 18px;
     padding: 1.75rem 1.5rem 2.4rem;
@@ -1247,13 +1240,13 @@ header {
   }
 }
 
-/* Mobile text colour override */
 @media (max-width: 600px) {
   .hero-title,
   .hero-subtitle {
     color: #0A1A0A;
   }
 }
+
 
 
 

@@ -3,7 +3,6 @@ import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import convert_to_unicode
 
-# 1. Load the BibTeX file
 with open("publications.bib", encoding="utf-8") as f:
     parser = BibTexParser(common_strings=True)
     parser.customization = convert_to_unicode
@@ -12,7 +11,6 @@ with open("publications.bib", encoding="utf-8") as f:
 publications = []
 
 for entry in bib_db.entries:
-    # Basic fields from BibTeX
     year    = entry.get("year", "")
     title   = entry.get("title", "").strip("{}")
     authors = entry.get("author", "")
@@ -22,7 +20,6 @@ for entry in bib_db.entries:
     doi     = entry.get("doi", "")
     url     = entry.get("url", "")
 
-    # Match the shape expected by publications.js
     pub_obj = {
         "year": year,
         "title": title,
@@ -31,13 +28,11 @@ for entry in bib_db.entries:
         "volume": volume,
         "pages": pages,
         "doi": doi,
-        # prefer explicit link if present, otherwise build from DOI
         "link": url or (f"https://doi.org/{doi}" if doi else "")
     }
 
     publications.append(pub_obj)
 
-# Optional: sort newest → oldest by year
 def year_key(p):
     try:
         return int(p["year"])
@@ -46,9 +41,9 @@ def year_key(p):
 
 publications.sort(key=year_key, reverse=True)
 
-# 3. Write publications.json
 with open("publications.json", "w", encoding="utf-8") as f:
     json.dump(publications, f, indent=2, ensure_ascii=False)
 
 print(f"Wrote {len(publications)} publications to publications.json")
+
 

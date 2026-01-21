@@ -1182,6 +1182,13 @@ header {
   color: #1E5631;
 }
 
+@media (max-width: 600px) {
+  .hero {
+    background-size: auto 130%;
+    background-position: top center;
+  }
+}
+
 
 
 

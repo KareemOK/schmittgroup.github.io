@@ -1197,7 +1197,6 @@ header {
     text-align: center;
   }
 
-  /* Full-width image strip with whole group visible */
   .hero::before {
     content: "";
     display: block;
@@ -1206,11 +1205,12 @@ header {
     width: 100vw;
     margin: 0 calc(-50vw + 50%);
 
-    height: 220px; /* tweak this if you want more / less image height */
+    height: 220px; /* adjust if you want more/less image */
     background:
       linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-      url("assets/group-mobile.JPG") center / contain no-repeat #000;
-    background-size: cover;
+      url("assets/group-mobile.JPG") center top / auto 100% no-repeat;
+    background-color: #000; /* fallback behind any edges */
+    center top / auto 100%
   }
 
   /* The white card */
@@ -1256,6 +1256,7 @@ header {
     color: #0A1A0A; /* dark greenish/black */
   }
 }
+
 
 
 

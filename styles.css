@@ -979,16 +979,16 @@ header {
   margin-bottom: 1.25rem;
 }
 
-.c4c-top h1 {
-  margin: 0;
-}
-
 .c4c-funder-logo {
   height: 55px;
   width: auto;
   flex-shrink: 0;
   display: block;
   object-fit: contain;
+}
+
+.c4c-top h1 {
+  margin: 0;
 }
 
 .c4c-content {
@@ -1006,13 +1006,14 @@ header {
   }
 
   .c4c-top {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-start;
     gap: 0.75rem;
   }
 
   .c4c-funder-logo {
     height: 45px;
+    margin-bottom: 0.25rem;
   }
 
   .c4c-content {
@@ -1266,6 +1267,7 @@ header {
     color: #0A1A0A;
   }
 }
+
 
 
 

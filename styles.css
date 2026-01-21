@@ -1233,6 +1233,22 @@ header {
   }
 }
 
+@media (max-width: 600px) {
+  .hero {
+    padding: 0; /* remove vertical padding on hero container */
+  }
+
+  .hero::before {
+    margin: 0;
+    display: block;
+  }
+
+  .hero-content {
+    margin-top: 0;
+    border-radius: 0 0 18px 18px;
+  }
+}
+
 
 
 

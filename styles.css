@@ -1268,6 +1268,18 @@ header {
   }
 }
 
+@media (max-width: 700px) {
+  .site-footer .footer-contact {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .footer-contact-item {
+    justify-content: center;
+    white-space: normal;  /* allow wrapping if needed */
+  }
+}
+
 
 
 

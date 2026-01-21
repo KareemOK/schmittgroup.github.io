@@ -1280,6 +1280,12 @@ header {
   }
 }
 
+@media (max-width: 600px) {
+  .footer-contact {
+    margin-bottom: 1.5rem;
+  }
+}
+
 
 
 

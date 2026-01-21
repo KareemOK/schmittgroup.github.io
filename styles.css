@@ -1182,20 +1182,19 @@ header {
   color: #1E5631;
 }
 
-/* ===== Mobile hero: floating card over full group photo ===== */
+/* ===== Mobile hero: full group photo + floating card ===== */
 @media (max-width: 600px) {
 
-  /* Reset the desktop hero on mobile */
   .hero {
     position: relative;
     padding: 0 1.25rem 3rem;      /* side padding + space under card */
-    background: none;             /* remove desktop bg image/gradient */
+    background: none;
     color: #222;
     display: block;
-    overflow: visible;            /* card can “float” over the image */
+    overflow: visible;
   }
 
-  /* Full-width image band at the top, using background-size: contain */
+  /* image band */
   .hero::before {
     content: "";
     display: block;
@@ -1206,13 +1205,13 @@ header {
         rgba(0, 0, 0, 0.35)
       ),
       url("assets/group3.JPG") center / contain no-repeat;
-    margin: 0 -1.25rem;           /* bleed image edge-to-edge */
+    margin: 0 -1.25rem -40px;     /* ⬅ bleed edge-to-edge AND overlap card */
   }
 
-  /* Floating card that overlaps the image */
+  /* floating card */
   .hero-content {
     position: relative;
-    margin: -40px auto 0;         /* negative = overlap with photo */
+    margin: 0 auto 0;             /* no gap above, card sits on the image */
     padding: 1.8rem 1.5rem 2rem;
     max-width: 480px;
     background: #ffffff;
@@ -1221,7 +1220,6 @@ header {
     text-align: center;
   }
 
-  /* Tweak typography on mobile */
   .hero-title {
     font-size: 2.1rem;
     margin-bottom: 0.75rem;
@@ -1233,7 +1231,7 @@ header {
     margin-bottom: 1.4rem;
   }
 
-  /* Stack the buttons and make them narrower */
+  /* narrower stacked buttons */
   .hero-buttons {
     flex-direction: column;
     gap: 0.75rem;
@@ -1247,6 +1245,7 @@ header {
     max-width: 260px;
   }
 }
+
 
 
 

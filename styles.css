@@ -1187,7 +1187,7 @@ header {
     height: auto;
     min-height: 80vh;
     padding: 6rem 1.5rem 3rem;
-    background-size: auto 120%;
+    background-size: contain;
     background-position: top center;
   }
 
@@ -1195,6 +1195,7 @@ header {
     margin-top: 2rem;
   }
 }
+
 
 
 

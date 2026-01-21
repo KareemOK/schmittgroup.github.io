@@ -1183,83 +1183,73 @@ header {
 }
 
 /* ============================
-   MOBILE HERO LAYOUT (≤ 600px)
+   MOBILE HERO (uses group-mobile.JPG)
    ============================ */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-  /* Reset desktop hero behaviour */
   .hero {
-    position: relative;
-    height: auto;
-    padding: 0 1.5rem 2.5rem;   /* side padding + space under card */
-    background: transparent;    /* no grey stripe behind the card */
-    display: block;             /* cancel desktop flex centering */
+    background:
+      linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+      url("assets/group-mobile.JPG") center / cover no-repeat;
+    height: 75vh;               /* taller viewport height */
+    padding: 1rem 1rem 0;       /* reduce vertical padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  /* place text toward bottom */
+    align-items: center;
     text-align: center;
   }
 
-  .hero::before {
-    content: "";
-    display: block;
-
-    width: 100vw;
-    margin: 0 calc(-50vw + 50%);
-    height: 260px; /* show more group */
-    
-    background:
-      linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
-      url("assets/group3.JPG") center / contain no-repeat white;
-  }
-
+  /* Move content card over the bottom of the image */
   .hero-content {
-    position: relative;
-    max-width: 360px;
-    margin: -40px auto 0;       /* pull card up over bottom of image */
-    background: #ffffff;
+    width: 92%;
+    max-width: 420px;
+    background: white;
+    padding: 1.5rem 1.25rem;
     border-radius: 18px;
-    padding: 1.75rem 1.5rem 2.4rem;
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    margin-bottom: -2.5rem; /* overlaps below edge for nice reveal */
+    position: relative;
+    z-index: 2;
   }
 
-  /* Typography tweaks */
+  /* Title + paragraph spacing */
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 0.75rem;
+    color: #1e5631;
   }
 
   .hero-subtitle {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: #333;
+    margin-bottom: 1.2rem;
   }
 
-  /* Buttons: narrower + stacked */
+  /* Buttons sizing */
   .hero-buttons {
+    width: 100%;
+    display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    justify-content: center;
+    gap: 0.8rem;
   }
 
   .hero-button {
     width: 100%;
-    max-width: 260px;
-    margin: 0 auto;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Push next section down comfortably */
+  .section,
+  #recent-news,
+  #recent-publications {
+    margin-top: 3.5rem !important;
   }
 }
 
-@media (max-width: 600px) {
-  .hero-title,
-  .hero-subtitle {
-    color: #0A1A0A; /* dark greenish/black */
-  }
-}
 
-@media (max-width: 600px) {
-  .hero-button {
-    width: 100%;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-}
 
 
 

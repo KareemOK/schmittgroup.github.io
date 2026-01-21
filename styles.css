@@ -1182,72 +1182,73 @@ header {
   color: #1E5631;
 }
 
+/* ===== Mobile hero: floating card over full group photo ===== */
 @media (max-width: 600px) {
 
+  /* Reset the desktop hero on mobile */
   .hero {
-    background: #f5f5f5;
-    padding: 1.25rem 1rem 3rem;
-    height: auto;
+    position: relative;
+    padding: 0 1.25rem 3rem;      /* side padding + space under card */
+    background: none;             /* remove desktop bg image/gradient */
     color: #222;
-    text-align: center;
     display: block;
+    overflow: visible;            /* card can “float” over the image */
   }
 
+  /* Full-width image band at the top, using background-size: contain */
   .hero::before {
     content: "";
     display: block;
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    padding-top: 50%; /* adjust for desired height */
+    height: 220px;                /* adjust if you want taller/shorter */
     background:
-      url("assets/group3.JPG") center top / contain no-repeat;
-    border-radius: 18px 18px 0 0;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      linear-gradient(
+        rgba(0, 0, 0, 0.35),
+        rgba(0, 0, 0, 0.35)
+      ),
+      url("assets/group3.JPG") center / contain no-repeat;
+    margin: 0 -1.25rem;           /* bleed image edge-to-edge */
   }
 
+  /* Floating card that overlaps the image */
   .hero-content {
-    max-width: 420px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 0 0 18px 18px;
-    padding: 1.5rem 1.2rem 2rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    margin-top: -3px;
+    position: relative;
+    margin: -40px auto 0;         /* negative = overlap with photo */
+    padding: 1.8rem 1.5rem 2rem;
+    max-width: 480px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    text-align: center;
   }
 
+  /* Tweak typography on mobile */
+  .hero-title {
+    font-size: 2.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
+  }
+
+  /* Stack the buttons and make them narrower */
   .hero-buttons {
-    width: 100%;
-    display: flex;
     flex-direction: column;
     gap: 0.75rem;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
   }
 
   .hero-button {
-    min-width: 55%;
+    width: 80%;
     max-width: 260px;
-    width: auto;
-    text-align: center;
   }
 }
 
-@media (max-width: 600px) {
-  .hero {
-    padding: 0; /* remove vertical padding on hero container */
-  }
 
-  .hero::before {
-    margin: 0;
-    display: block;
-  }
-
-  .hero-content {
-    margin-top: 0;
-    border-radius: 0 0 18px 18px;
-  }
-}
 
 
 

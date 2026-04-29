@@ -6,10 +6,6 @@
   </url>
 
   <url>
-    <loc>https://schmittlab.com/members.html</loc>
-  </url>
-
-  <url>
     <loc>https://schmittlab.com/publications.html</loc>
   </url>
 
@@ -21,7 +17,16 @@
     <loc>https://schmittlab.com/water-splitting.html</loc>
   </url>
 
+  <url>
+    <loc>https://schmittlab.com/air-in-motion.html</loc>
+  </url>
+
+  <url>
+    <loc>https://schmittlab.com/synaergy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://schmittlab.com/members.html</loc>
+  </url>
+
 </urlset>
-
-
-

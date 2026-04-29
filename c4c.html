@@ -24,136 +24,11 @@
   <meta property="og:image:alt"
         content="Schmitt Group research on catalytic water splitting and direct air capture at Trinity College Dublin" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
         rel="stylesheet">
   <link href="styles.css" rel="stylesheet" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ResearchOrganization",
-    "name": "Schmitt Group",
-    "description": "Academic inorganic and materials research group, focused on catalytic water splitting and direct air capture, utilising supramolecular chemistry (MOFs, coordination cages), carbon nanomaterials, and many other materials.",
-    "parentOrganization": {
-      "@type": "CollegeOrUniversity",
-      "name": "Trinity College Dublin"
-    },
-    "knowsAbout": [
-      "Carbon capture",
-      "Direct air capture",
-      "Supramolecular chemistry",
-      "Water splitting",
-      "Metal-organic-frameworks",
-      "MOFs",
-      "Green chemistry",
-      "Oxygen evolution",
-      "Hydrogen evolution",
-      "Carbon nanomaterials",
-      "Graphene"
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Prof. Wolfgang Schmitt",
-    "jobTitle": "Principal Investigator",
-    "worksFor": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Trinity College Dublin"
-      },
-      {
-        "@type": "Organization",
-        "name": "Synaergy"
-      },
-      {
-        "@type": "Organization",
-        "name": "Air-in-Motion"
-      }
-    ],
-    "affiliation": [
-      {
-        "@type": "Organization",
-        "name": "CRANN"
-      },
-      {
-        "@type": "Organization",
-        "name": "AMBER"
-      }
-    ],
-    "knowsAbout": [
-      "Carbon capture",
-      "Direct air capture",
-      "Supramolecular chemistry",
-      "Water splitting",
-      "Metal-organic-frameworks",
-      "MOFs",
-      "Green chemistry",
-      "Oxygen evolution",
-      "Hydrogen evolution",
-      "Carbon nanomaterials",
-      "Graphene"
-    ]
-  }
-  </script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ResearchProject",
-  "name": "C4C-Capture Project",
-  "description": "The C4C project is a research project focused on developing sustainable, carbon-based nanomaterials for direct air capture technologies, with a particular emphasis on materials derived from biomass and biowaste resources. It is led by the Schmitt Group at Trinity College Dublin, in collaboration with Prof. Jonathan Coleman.",
-  "member": [
-    {
-      "@type": "Role",
-      "roleName": "Principal Investigator",
-      "member": {
-        "@type": "Person",
-        "name": "Wolfgang Schmitt"
-      }
-    },
-    {
-      "@type": "Role",
-      "roleName": "Collaborator",
-      "member": {
-        "@type": "Person",
-        "name": "Jonathan N Coleman"
-      }
-    }
-  ],
-  "funder": [
-    {
-      "@type": "Organization",
-      "name": "Environmental Protection Agency"
-    }
-  ],
-  "keywords": [
-    "Carbon capture",
-    "Direct air capture",
-    "Green chemistry",
-    "Carbon nanomaterials",
-    "Graphene",
-    "Amine-functionalized materials"
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Schmitt Group",
-  "url": "https://schmittlab.com/",
-  "creator": {
-    "@type": "Person",
-    "name": "Kareem Ouhalla Knipschild",
-    "description": "Website design and development"
-  }
-}
-</script>
 
 </head>
 
@@ -177,6 +52,8 @@
       <a href="publications.html">Publications</a>
       <a href="c4c.html">C4C-Capture Project</a>
       <a href="water-splitting.html">MOFs for Water Splitting</a>
+      <a href="air-in-motion.html">Air-in-Motion</a>
+      <a href="synaergy.html">Synaergy</a>
       <a href="members.html">Members</a>
     </nav>
   </header>
@@ -185,11 +62,13 @@
 
 <div class="c4c-top">
   <h1>C4C-Capture</h1>
-  <img
-    src="assets/epa.svg"
-    alt="Environmental Protection Agency of Ireland"
-    class="c4c-funder-logo">
-</div><br><br>
+  <a href="https://www.epa.ie" target="_blank" rel="noopener noreferrer">
+    <img
+      src="assets/epa.svg"
+      alt="Environmental Protection Agency of Ireland"
+      class="c4c-funder-logo aim-eic-logo">
+  </a>
+</div>
 
     <div class="c4c-content">
 
@@ -242,6 +121,9 @@
         scalability, and sustainability requirements.
       </p><br><br>
 
+      <h2>Project News</h2>
+      <div id="news-list" class="news-list" data-tag="c4c"></div><br><br>
+
       <h2>Associated Publications</h2>
       <p>
       Future publications arising from this project will be listed here.
@@ -270,31 +152,64 @@
       <div class="members-grid">
 
         <div class="member-card">
-          <img src="assets/q.png" alt="Dr. Navaneetha Tokala" class="team-photo">
-          <div class="team-name">Dr. Navaneetha Tokala</div>
-          <div class="team-role">Postdoctoral Researcher</div>
+          <img src="assets/q.png" alt="Dr. Navaneetha Tokala" class="member-photo">
+          <div class="member-name">Dr. Navaneetha Tokala</div>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/dr-navaneetha-tokala-584100365/" target="_blank" rel="noopener noreferrer"
+               aria-label="LinkedIn profile: Dr. Navaneetha Tokala"><img src="assets/linkedin.svg" alt="LinkedIn"></a>
+            <a href="https://orcid.org/0009-0009-6332-5615" target="_blank" rel="noopener noreferrer"
+               aria-label="ORCID profile: Dr. Navaneetha Tokala"><img src="assets/orcid.svg" alt="ORCID"></a>
+          </div>
+          <div class="member-role">Postdoctoral Researcher</div>
+          <div class="member-affiliation"><a href="mailto:tokalan@tcd.ie">tokalan@tcd.ie</a></div>
         </div>
 
         <div class="member-card">
-          <img src="assets/q.png" alt="Kareem Ouhalla Knipschild" class="team-photo">
-          <div class="team-name">Kareem Ouhalla Knipschild</div>
-          <div class="team-role">PhD Researcher</div>
+          <img src="assets/photo.jpg" alt="Kareem Ouhalla Knipschild" class="member-photo">
+          <div class="member-name">Kareem Ouhalla Knipschild</div>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/kareem-knipschild/" target="_blank" rel="noopener noreferrer"
+               aria-label="LinkedIn profile: Kareem Ouhalla Knipschild"><img src="assets/linkedin.svg" alt="LinkedIn"></a>
+            <a href="https://orcid.org/0009-0001-1235-9796" target="_blank" rel="noopener noreferrer"
+               aria-label="ORCID profile: Kareem Ouhalla Knipschild"><img src="assets/orcid.svg" alt="ORCID"></a>
+            <a href="https://scholar.google.com/citations?user=eIAkH3oAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer"
+               aria-label="Google Scholar profile: Kareem Ouhalla Knipschild"><img src="assets/scholar.svg" alt="Scholar"></a>
+          </div>
+          <div class="member-role">PhD Researcher</div>
+          <div class="member-affiliation"><a href="mailto:ouhallak@tcd.ie">ouhallak@tcd.ie</a></div>
         </div>
 
         <div class="member-card">
-          <img src="assets/q.png" alt="Rebeka Juríčková" class="team-photo">
-          <div class="team-name">Rebeka Juríčková</div>
-          <div class="team-role">PhD Researcher</div>
+          <img src="assets/q.png" alt="Rebeka Juríčková" class="member-photo">
+          <div class="member-name">Rebeka Juríčková</div>
+          <div class="member-links">
+            <a href="https://orcid.org/0009-0003-9765-443X" target="_blank" rel="noopener noreferrer"
+               aria-label="ORCID profile: Rebeka Juríčková"><img src="assets/orcid.svg" alt="ORCID"></a>
+          </div>
+          <div class="member-role">PhD Researcher</div>
+          <div class="member-affiliation"><a href="mailto:jurickor@tcd.ie">jurickor@tcd.ie</a></div>
         </div>
 
       </div>
 
-      <p class="project-team-note">
-        Full profiles and contact details can be found on the
-        <a href="members.html">Members</a> page.
-      </p>
-
     </div>
+  </section>
+
+  <section class="section epa-acknowledgement">
+    <p>
+      This project is funded under the
+      <strong>EPA Research Programme 2021–2030</strong>.
+      The EPA Research Programme is a Government of Ireland initiative funded by the
+      Department of Climate, Energy and the Environment.
+    </p>
+    <p class="epa-disclaimer">
+      Although every effort has been made to ensure the accuracy of the material
+      contained in this webpage, complete accuracy cannot be guaranteed. Neither the
+      Environmental Protection Agency nor the authors accept any responsibility
+      whatsoever for loss or damage occasioned or claimed to have been occasioned,
+      in part or in full, as a consequence of any person acting or refraining from
+      acting, as a result of a matter contained in this webpage.
+    </p>
   </section>
 
 <footer class="site-footer">
@@ -345,7 +260,7 @@
   </div>
 
   <div class="footer-bottom">
-    © 2025 Schmitt Group
+    © <span id="footer-year"></span> Schmitt Group
   </div>
 </footer>
 
@@ -374,21 +289,11 @@
       });
     });
   </script>
+  <script src="news.js"></script>
+
+  <script>
+    document.getElementById("footer-year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

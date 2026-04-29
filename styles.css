@@ -31,7 +31,7 @@ header {
   justify-content: space-between;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .header-top,
   .main-nav {
     max-width: 1100px;
@@ -129,10 +129,12 @@ nav a.active {
 
 .hero-subtitle {
   font-size: 1.3rem;
-  max-width: 700px;
+  max-width: 800px;
   line-height: 1.5;
   margin-bottom: 2rem;
   opacity: 0.95;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-buttons {
@@ -150,6 +152,8 @@ nav a.active {
   text-decoration: none;
   font-weight: 700;
   font-size: 1.15rem;
+  min-width: 160px;
+  text-align: center;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
@@ -177,6 +181,28 @@ nav a.active {
 .hero-button-secondary.hero-button-blue:hover {
   background: #2f5d8a;
   border-color: #2f5d8a;
+}
+
+.hero-button-secondary.hero-button-dark {
+  background: #2f3442;
+  border-color: #2f3442;
+  color: white;
+}
+
+.hero-button-secondary.hero-button-dark:hover {
+  background: #1f2230;
+  border-color: #1f2230;
+}
+
+.hero-button-secondary.hero-button-outline {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #2f3442;
+}
+
+.hero-button-secondary.hero-button-outline:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.85);
 }
 
 .button {
@@ -652,53 +678,9 @@ nav a.active {
   margin-bottom: 1rem;
 }
 
-.dac-companies {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 220px);
-  gap: 1.5rem;
-  justify-content: center;
-  margin: 2rem 0;
-}
-
-.dac-company-card {
-  height: 32px;
-  padding: 0.4rem;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.dac-company-card:hover {
-  transform: translateY(-2px);
-  box-shadow: none;
-}
-
-.dac-company-logo {
-  max-height: 36px;
-  max-width: 75%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
-
-.dac-airinmotion {
-  background: #2f3442;
-}
-
-.dac-airinmotion .dac-company-logo {
-  filter: brightness(1.05);
-}
-
-.dac-synaergy {
-  background: #ffffff;
-  border: 1.5px solid #d0d0d0;
-}
-
-.dac-synaergy .dac-company-logo {
-  max-height: 30px;
+.members-grid-two-col {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
 .members-grid.members-grid-compact {
@@ -748,7 +730,7 @@ nav a.active {
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 
 .c4c-top h1 {
@@ -756,7 +738,7 @@ nav a.active {
 }
 
 .c4c-funder-logo {
-  height: 55px;
+  height: 50px;
   width: auto;
   flex-shrink: 0;
   display: block;
@@ -773,6 +755,69 @@ nav a.active {
 }
 
 .water-splitting-content p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.news-empty {
+  font-size: 0.95rem;
+  color: #555;
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.aim-header-logo {
+  background: #2f3442;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+}
+
+.synaergy-header-logo {
+  height: 48px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+}
+
+.c4c-top.logo-only {
+  justify-content: flex-start;
+}
+
+.aim-eic-logo {
+  height: 50px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  border: 1.5px solid #d0d0d0;
+}
+
+.spinout-cta {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.epa-acknowledgement {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.epa-acknowledgement p {
+  margin: 0 0 0.6rem;
+}
+
+.epa-acknowledgement p:last-child {
+  margin-bottom: 0;
+}
+
+.epa-disclaimer {
+  font-style: italic;
+  opacity: 0.85;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -949,7 +994,115 @@ nav a.active {
   }
 }
 
+@media (max-width: 1024px) {
+  .nav-toggle {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem 2rem;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .main-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    text-align: center;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .main-nav a {
+    padding: 0.4rem 0;
+    border-bottom: none;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  /* Nav — reduce gap so items don't wrap */
+  .main-nav {
+    gap: 1.1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  /* Members grid — force 2 columns on mid-width tablets */
+  .members-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Homepage team grid — 3 columns max */
+  .homepage-team {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Recent publications — 2 columns */
+  #recent-publications {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* PI profile — keep two columns but tighten */
+  .pi-profile {
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+  }
+
+  .pi-profile .member-photo {
+    width: 170px;
+    height: 170px;
+  }
+
+  /* Footer logos — allow wrapping earlier */
+  .footer-funding {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .footer-funding a {
+    width: 110px;
+    height: 46px;
+  }
+
+  /* Footer layout — stack on smaller tablets */
+  .footer-content {
+    gap: 2.5rem;
+  }
+
+  /* News grid — keep 2-col but adjust ratio */
+  .news-list {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  /* Section padding */
+  .section {
+    padding: 2.5rem 2rem;
+  }
+}
+
 @media (max-width: 600px) {
+  .members-grid-two-col {
+    grid-template-columns: 1fr;
+  }
+
   .hero {
     position: relative;
     height: auto;
@@ -1035,7 +1188,7 @@ nav a.active {
   }
 
   .c4c-funder-logo {
-    height: 45px;
+    height: 36px;
     margin-bottom: 0.25rem;
   }
 
@@ -1094,57 +1247,3 @@ nav a.active {
     height: 22px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

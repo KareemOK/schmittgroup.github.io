@@ -14,6 +14,8 @@
 
   <link rel="canonical" href="https://schmittlab.com/publications.html" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
   <link href="styles.css" rel="stylesheet" />
 
@@ -23,46 +25,6 @@
   <meta property="og:description" content="Publications from the Schmitt Group at Trinity College Dublin in inorganic and materials chemistry." />
   <meta property="og:image" content="https://schmittlab.com/assets/og-preview.png" />
   <meta property="og:image:alt" content="Schmitt Group research on catalytic water splitting and direct air capture at Trinity College Dublin" />
-
- <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ResearchOrganization",
-    "name": "Schmitt Group",
-    "description": "Academic inorganic and materials research group, focused on catalytic water splitting and direct air capture, utilising supramolecular chemistry (MOFs, coordination cages), carbon nanomaterials, and many other materials.",
-    "parentOrganization": {
-      "@type": "CollegeOrUniversity",
-      "name": "Trinity College Dublin"
-    },
-    "knowsAbout": [
-      "Carbon capture",
-      "Direct air capture",
-      "Supramolecular chemistry",
-      "Water splitting",
-      "Metal-organic-frameworks",
-      "MOFs",
-      "Green chemistry",
-      "Oxygen evolution",
-      "Hydrogen evolution",
-      "Carbon nanomaterials",
-      "Graphene"
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Schmitt Group",
-  "url": "https://schmittlab.com/",
-  "creator": {
-    "@type": "Person",
-    "name": "Kareem Ouhalla Knipschild",
-    "description": "Website design and development"
-  }
-}
-</script>
 
 </head>
 
@@ -86,6 +48,8 @@
     <a href="publications.html">Publications</a>
     <a href="c4c.html">C4C-Capture Project</a>
     <a href="water-splitting.html">MOFs for Water Splitting</a>
+    <a href="air-in-motion.html">Air-in-Motion</a>
+    <a href="synaergy.html">Synaergy</a>
     <a href="members.html">Members</a>
   </nav>
 </header>
@@ -152,7 +116,7 @@
   </div>
 
   <div class="footer-bottom">
-    © 2025 Schmitt Group
+    © <span id="footer-year"></span> Schmitt Group
   </div>
 </footer>
 
@@ -321,27 +285,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 </script>
 
+<script>
+  document.getElementById("footer-year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

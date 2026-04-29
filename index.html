@@ -24,99 +24,11 @@
   <meta property="og:image:alt"
         content="Schmitt Group research on catalytic water splitting and direct air capture at Trinity College Dublin" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
         rel="stylesheet">
   <link href="styles.css" rel="stylesheet" />
-
- <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ResearchOrganization",
-    "name": "Schmitt Group",
-    "description": "Academic inorganic and materials research group, focused on catalytic water splitting and direct air capture, utilising supramolecular chemistry (MOFs, coordination cages), carbon nanomaterials, and many other materials.",
-    "parentOrganization": {
-      "@type": "CollegeOrUniversity",
-      "name": "Trinity College Dublin"
-    },
-    "knowsAbout": [
-      "Carbon capture",
-      "Direct air capture",
-      "Supramolecular chemistry",
-      "Water splitting",
-      "Metal-organic-frameworks",
-      "MOFs",
-      "Green chemistry",
-      "Oxygen evolution",
-      "Hydrogen evolution",
-      "Carbon nanomaterials",
-      "Graphene"
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Prof. Wolfgang Schmitt",
-    "jobTitle": "Principal Investigator",
-    "worksFor": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Trinity College Dublin"
-      },
-      {
-        "@type": "Organization",
-        "name": "Synaergy"
-      },
-      {
-        "@type": "Organization",
-        "name": "Air-in-Motion"
-      }
-    ],
-    "affiliation": [
-      {
-        "@type": "Organization",
-        "name": "CRANN"
-      },
-      {
-        "@type": "Organization",
-        "name": "AMBER"
-      }
-    ],
-    "sameAs": [
-      "https://orcid.org/0000-0002-0058-9404",
-      "https://www.linkedin.com/in/wolfgang-schmitt-7b36a733/?originalSubdomain=ie"
-    ],
-    "knowsAbout": [
-      "Carbon capture",
-      "Direct air capture",
-      "Supramolecular chemistry",
-      "Water splitting",
-      "Metal-organic-frameworks",
-      "MOFs",
-      "Green chemistry",
-      "Oxygen evolution",
-      "Hydrogen evolution",
-      "Carbon nanomaterials",
-      "Graphene"
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Schmitt Group",
-    "url": "https://schmittlab.com/",
-    "creator": {
-      "@type": "Person",
-      "name": "Kareem Ouhalla Knipschild",
-      "description": "Website design and development"
-    }
-  }
-  </script>
 
 </head>
 
@@ -140,6 +52,8 @@
       <a href="publications.html">Publications</a>
       <a href="c4c.html">C4C-Capture Project</a>
       <a href="water-splitting.html">MOFs for Water Splitting</a>
+      <a href="air-in-motion.html">Air-in-Motion</a>
+      <a href="synaergy.html">Synaergy</a>
       <a href="members.html">Members</a>
     </nav>
   </header>
@@ -149,13 +63,19 @@
     <h1 class="hero-title">Schmitt Group</h1>
 
     <p class="hero-subtitle">
-      Explore our two main areas of research: Carbon nanomaterials for CO<sub>2</sub> capture, and metal–organic frameworks (MOFs) for water splitting.
+      An inorganic and materials chemistry group at Trinity College Dublin, developing sustainable solutions for CO<sub>2</sub> capture and MOF-based water splitting.
     </p>
 
     <div class="hero-buttons">
       <a href="c4c.html" class="hero-button">CO<sub>2</sub> Capture</a>
       <a href="water-splitting.html" class="hero-button hero-button-secondary hero-button-blue">
         Water Splitting
+      </a>
+      <a href="air-in-motion.html" class="hero-button hero-button-secondary hero-button-dark">
+        Air-in-Motion
+      </a>
+      <a href="synaergy.html" class="hero-button hero-button-secondary hero-button-outline">
+        Synaergy
       </a>
     </div>
   </div>
@@ -184,13 +104,13 @@
 
     <div class="homepage-team">
       <div class="team-card">
-        <img src="assets/q.png" class="team-photo" alt="Prof. Wolfgang Schmitt">
+        <img src="assets/Wolfgang.png" class="team-photo" alt="Prof. Wolfgang Schmitt">
         <div class="team-name">Prof. Wolfgang Schmitt</div>
         <div class="team-role">Principal Investigator</div>
       </div>
 
       <div class="team-card">
-        <img src="assets/q.png" class="team-photo" alt="Dr. Sebastien Vaesen">
+        <img src="assets/seb.png" class="team-photo" alt="Dr. Sebastien Vaesen">
         <div class="team-name">Dr. Sebastien Vaesen</div>
         <div class="team-role">Postdoctoral Researcher</div>
       </div>
@@ -252,7 +172,7 @@
   </div>
 
   <div class="footer-bottom">
-    © 2025 Schmitt Group
+    © <span id="footer-year"></span> Schmitt Group
   </div>
 </footer>
 
@@ -289,21 +209,9 @@
   });
 </script>
 
+<script>
+  document.getElementById("footer-year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
